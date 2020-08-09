@@ -1,0 +1,4241 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="1" author="drudenko" failOnError="false">
+        <preConditions>
+            <not>
+                <columnExists tableName="tb_monsters" columnName="bioms"/>
+            </not>
+        </preConditions>
+        <addColumn tableName="tb_monsters">
+            <column name="bioms" type="VARCHAR(6000)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="2" author="drudenko">
+        <update tableName="tb_monsters">
+            <column name="bioms">Горы</column>
+            <where>name = 'Ааракокра (Aarakocra)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Аболет (Aboleth)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Аватар Смерти (Avatar of Death)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Горы,Подземье</column>
+            <where>name = 'Адская гончая (Hell Hound)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Азер (Azer)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Акула охотник (Hunter Shark)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Равнина</column>
+            <where>name = 'Аллозавр (Allosaurus)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Алхун [Alhoon]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Подземье</column>
+            <where>name = 'Альфа грик (Grick Alpha)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня</column>
+            <where>name = 'Андро-сфинкс (Androsphinx)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Равнина</column>
+            <where>name = 'Анкилозавр (Ankylosaurus)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Равнина</column>
+            <where>name = 'Анкхег (Ankheg)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Арканалот (Arcanaloth)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Город</column>
+            <where>name = 'Архимаг (Archmage)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Город</column>
+            <where>name = 'Ассассин (Assassin)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Бабау [Babau]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Холмы</column>
+            <where>name = 'Бабуин (Baboon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Равнина,Подземье</column>
+            <where>name = 'Багбир (Bugbear)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Багбир Шеф (Bugbear Chief)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Болота</column>
+            <where>name = 'Балливаг (Bullywug)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Балор (Balor)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Бандерхобб [Banderhobb]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье,Побережье,Пустыня,Лес,Холмы,Город</column>
+            <where>name = 'Бандит (Bandit)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Побережье,Лес</column>
+            <where>name = 'Баньши (Banshee)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Баргест [Barghest]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Барлгура (Barlgura)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес</column>
+            <where>name = 'Барсук (Badger)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье,Подземье</column>
+            <where>name = 'Белый медведь (Polar Bear)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье,Побережье,Пустыня,Лес,Холмы,Горы</column>
+            <where>name = 'Берсерк (Berserker)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Бехир (Behir)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Бехолдер (Beholder)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Болота,Город</column>
+            <where>name = 'Блуждающий огонек (Will-o$apos;-Wisp)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Боггл [Boggle]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Бодак [Bodak]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Город</column>
+            <where>name = 'Боевой конь (Warhorse)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Больная гигантская крыса (Giant Rat Diseased)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Бормочущий ротовик (Gibbering Mouther)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Бородатый Дьявол (Bearded Devil)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Бронтозавр [Brontosaurus]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Равнина,Холмы,Горы</column>
+            <where>name = 'Булетт (Bulette)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье,Лес,Холмы</column>
+            <where>name = 'Бурый Медведь (Brown Bear)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Бурый увалень (Umber Hulk)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Город</column>
+            <where>name = 'Вампир (Vampire)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Город</column>
+            <where>name = 'Вампир воин (Vampire Warrior)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Город</column>
+            <where>name = 'Вампир заклинатель (Vampire Spellcaster)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье,Город</column>
+            <where>name = 'Вампирское отродье (Vampire Spawn)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Варгулья [Vargoulle]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Горы</column>
+            <where>name = 'Василиск (Basilisk)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Вегепигмей [Vegepygmy]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Вегепигмей вождь [Vegepygmy chief]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Великанский ходун [Giant strider]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Велоцираптор [Velociraptor]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня</column>
+            <where>name = 'Верблюд (Camel)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес</column>
+            <where>name = 'Ветвистая зараза (Twig Blight)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье,Побережье,Лес,Равнина,Холмы,Горы,Подземье,Город</column>
+            <where>name = 'Ветеран (Veteran)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье</column>
+            <where>name = 'Взрослый Белый Дракон (Adult White Dragon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Побережье</column>
+            <where>name = 'Взрослый Бронзовый Дракон (Adult Bronze Dragon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес</column>
+            <where>name = 'Взрослый Зеленый Дракон (Adult Green Dragon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Равнина</column>
+            <where>name = 'Взрослый Золотой Дракон (Adult Gold Dragon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Холмы,Горы</column>
+            <where>name = 'Взрослый Красный Дракон (Adult Red Dragon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня</column>
+            <where>name = 'Взрослый Латунный Дракон (Adult Brass Dragon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Холмы</column>
+            <where>name = 'Взрослый Медный Дракон (Adult Copper Dragon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Взрослый Миконид (Myconid Adult)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Горы,Город</column>
+            <where>name = 'Взрослый Серебряный Дракон (Adult Silver Dragon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня</column>
+            <where>name = 'Взрослый Синий Драколич (Adult Blue Dracolich)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Побережье,Пустыня</column>
+            <where>name = 'Взрослый Синий Дракон (Adult Blue Dragon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Болота</column>
+            <where>name = 'Взрослый Черный Дракон (Adult Black Dragon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Холмы,Горы</column>
+            <where>name = 'Виверна (Wyvern)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Визгун (Shrieker)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес</column>
+            <where>name = 'Виноградная зараза (Vine Blight)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Вирмлинг Белого Дракона (White Dragon Wyrmling)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Вирмлинг Бронзового Дракона (Bronze Dragon Wyrmling)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Вирмлинг Зеленого Дракона (Green Dragon Wyrmling)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Вирмлинг Золотого Дракона (Gold Dragon Wyrmling)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Вирмлинг Красного Дракона (Red Dragon Wyrmling)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Вирмлинг Латунного Дракона (Brass Dragon Wyrmling)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Вирмлинг Медного Дракона (Copper Dragon Wyrmling)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Вирмлинг Серебряного Дракона (silver Dragon Wyrmling)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Вирмлинг Синиего Дракона (Blue Dragon Wyrmling)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Вирмлинг Черного Дракона (Black Dragon Wyrmling)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье,Город</column>
+            <where>name = 'Водная аномалия (Water Weird)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Побережье,Болота,Подземье</column>
+            <where>name = 'Водный Элементаль (Water Elemental)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня,Горы</column>
+            <where>name = 'Воздушный Элементаль (Air Elemental)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье,Побережье,Пустыня,Лес,Равнина,Холмы,Горы,Болота,Подземье</column>
+            <where>name = 'Воин племени (Tribal Warrior)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Равнина,Холмы</column>
+            <where>name = 'Волк (Wolf)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Холмы</column>
+            <where>name = 'Волк-оборотень (Werewolf)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Равнина,Холмы</column>
+            <where>name = 'Ворг (Worg)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Холмы,Болота,Город</column>
+            <where>name = 'Ворон (Raven)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Врок (Vrock)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Болота,Подземье,Город</column>
+            <where>name = 'Вурдалак (Ghast)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Гадрозавр [Hadrosaurus]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Газовая спора (Gas Spore)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Холмы,Горы</column>
+            <where>name = 'Галеб Дур (Galeb Duhr)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье,Город</column>
+            <where>name = 'Гаргулья (Gargoyle)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Побережье,Лес,Холмы,Горы</column>
+            <where>name = 'Гарпия (Harpy)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Гаут [Gauth]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес</column>
+            <where>name = 'Гиганский Барсук (Giant Badger)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Гигантская акула (Giant Shark)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня,Лес,Равнина,Холмы</column>
+            <where>name = 'Гигантская гиена (Giant Hyena)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Побережье,Пустыня,Лес,Болота,Подземье</column>
+            <where>name = 'Гигантская жаба (Giant Toad)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Равнина,Холмы,Горы</column>
+            <where>name = 'Гигантская коза (Giant Goat)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Болота,Подземье,Город</column>
+            <where>name = 'Гигантская крыса (Giant Rat)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Подземье</column>
+            <where>name = 'Гигантская летучая мышь (Giant Bat)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Болота</column>
+            <where>name = 'Гигантская лягушка (Giant Frog)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье,Город</column>
+            <where>name = 'Гигантская многоножка (Giant Centipede)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Гигантская муха (Giant Fly)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес</column>
+            <where>name = 'Гигантская обезьяна (Giant Ape)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Равнина,Город</column>
+            <where>name = 'Гигантская оса (Giant Wasp)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье,Лес,Холмы</column>
+            <where>name = 'Гигантская сова (Giant Owl)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня,Лес,Равнина,Болота,Подземье,Город</column>
+            <where>name = 'Гигантская ядовитая змея (Giant Poisonous Snake)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Побережье,Пустыня,Лес,Болота,Подземье</column>
+            <where>name = 'Гигантская ящерица (Giant Lizard)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Гигантский Осьминог (Giant Octopus)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Равнина,Холмы</column>
+            <where>name = 'Гигантский горностай (Giant Weasel)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня,Равнина</column>
+            <where>name = 'Гигантский гриф (Giant Vulture)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Равнина,Холмы</column>
+            <where>name = 'Гигантский кабан (Giant Boar)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Побережье</column>
+            <where>name = 'Гигантский краб (Giant Crab)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Болота</column>
+            <where>name = 'Гигантский крокодил (Giant Crocodile)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Равнина,Холмы,Горы</column>
+            <where>name = 'Гигантский лось (Giant Elk)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Гигантский морской конек (Giant Sea Horse)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Побережье,Равнина,Холмы,Горы</column>
+            <where>name = 'Гигантский орел (Giant Eagle)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня,Лес,Болота,Подземье,Город</column>
+            <where>name = 'Гигантский паук (Giant Spider)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Побережье,Пустыня,Лес,Равнина,Холмы</column>
+            <where>name = 'Гигантский паук-волк (Giant Wolf Spider)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Гигантский светлячок (Giant Fire Beetle)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня</column>
+            <where>name = 'Гигантский скорпион (Giant Scorpion)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня,Лес,Болота,Подземье</column>
+            <where>name = 'Гигантский удав (Giant Constrictor Snake)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Болота</column>
+            <where>name = 'Гидра (Hydra)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня,Лес,Равнина,Холмы</column>
+            <where>name = 'Гиена (Hyena)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня</column>
+            <where>name = 'Гиносфинкс (Gynosphinx)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Равнина,Холмы,Горы</column>
+            <where>name = 'Гиппогриф (Hippogriff)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Гираллон [Girallon]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Гитзераи Зерт (Githzerai Zerth)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Гитзераи монах (Githzerai Monk)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Гитиянки Воин (Githyanki Warrior)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Гитиянки рыцарь (Githyanki Knight)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Глабрезу (Glabrezu)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Город</column>
+            <where>name = 'Гладиатор (Gladiator)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Глинянный Голем (Clay Golem)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Глубинный гном Свирфнеблин (Deep Gnome Svirfneblin)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня,Лес,Равнина,Холмы</column>
+            <where>name = 'Гнолл (Gnoll)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Гнолл Глодатель [Gnoll Flesh Gnawer]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня,Лес,Равнина,Холмы</column>
+            <where>name = 'Гнолл Клык Иеноху (Gnoll Fang of Yeenoghu)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Гнолл Охотник [Gnoll Hunter]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня,Лес,Равнина,Холмы</column>
+            <where>name = 'Гнолл хозяин стаи (Gnoll Pack Lord)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Равнина,Холмы,Подземье</column>
+            <where>name = 'Гоблин (Goblin)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Равнина,Холмы,Подземье</column>
+            <where>name = 'Гоблин Босс (Goblin Boss)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Город</column>
+            <where>name = 'Головорез (Thug)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Гомункул (Homunculus)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Гончая йет [Yeth hound]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Равнина,Холмы</column>
+            <where>name = 'Горгона (Gorgon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Гористро (Goristro)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Горностай (Weasel)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Грелл (Grell)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Подземье</column>
+            <where>name = 'Грик (Grick)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Гримлок (Grimlock)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня,Равнина,Холмы</column>
+            <where>name = 'Гриф (Vulture)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье,Побережье,Равнина,Холмы,Горы</column>
+            <where>name = 'Грифон (Griffon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Грунг [Grung]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Болота</column>
+            <where>name = 'Грязевой мефит (Mud Mephit)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Болота,Подземье,Город</column>
+            <where>name = 'Гуль (Ghoul)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Дао (Dao)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Дарклинг [Darkling]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Город</column>
+            <where>name = 'Дворянин (Noble)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Дейноних [Deinonychus]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Дельфин [Dolphin]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Демилич (Demilich)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Демон-боец (Pit Fiend)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Побережье</column>
+            <where>name = 'Джинн (Djinni)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Дикий грунг [Grung wildling]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Диметродон [Dimetrodon]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье,Город</column>
+            <where>name = 'Доппелгангер (Doppelganger)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Драйдер (Drider)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Драйдер Заклинатель (Drider Spellcaster)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Побережье,Подземье</column>
+            <where>name = 'Драконовая черепаха (Dragon Turtle)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье</column>
+            <where>name = 'Древний Белый Дракон (Ancient White Dragon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Побережье</column>
+            <where>name = 'Древний Бронзовый Дракон (Ancient Bronze Dragon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес</column>
+            <where>name = 'Древний Зеленый Дракон (Ancient Green Dragon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Равнина</column>
+            <where>name = 'Древний Золотой Дракон (Ancient Gold Dragon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Холмы,Горы</column>
+            <where>name = 'Древний Красный Дракон (Ancient Red Dragon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня</column>
+            <where>name = 'Древний Латунный Дракон (Ancient Brass Dragon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Холмы</column>
+            <where>name = 'Древний Медный Дракон (Ancient Copper Dragon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Горы,Город</column>
+            <where>name = 'Древний Серебряный Дракон (Ancient Silver Dragon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Побережье,Пустыня</column>
+            <where>name = 'Древний Синий Дракон (Ancient Blue Dragon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Болота</column>
+            <where>name = 'Древний Черный Дракон (Ancient Black Dragon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Дредноут огненный великан [Fire giant dreadnought]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Дретч (Dretch)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес</column>
+            <where>name = 'Дриада (Dryad)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Дроу (Drow)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Дроу Маг (Drow Mage)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Дроу жрица Лолт (Drow Priestess of Lolth)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Дроу элитный воин (Drow Elite Warrior)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье,Побережье,Пустыня,Лес,Равнина,Холмы,Горы,Болота,Подземье</column>
+            <where>name = 'Друид (Druid)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Дрэглот [Draegloth]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Дуегар (Duergar)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Дуодрон (Duodrone)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Дух (Wraith)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Город</column>
+            <where>name = 'Дымный мефит (Smoke Mephit)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Дэв (Deva)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес</column>
+            <where>name = 'Единорог (Unicorn)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Желатиновый куб (Gelatinous Cube)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Железный голем (Iron Golem)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Город</column>
+            <where>name = 'Жрец (Priest)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Холмы,Болота</column>
+            <where>name = 'Зеленая ведьма (Green Hag)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Зеленый Слаад (Green Slaad)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Земляной Элементаль (Earth Elemental)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье</column>
+            <where>name = 'Зимний волк (Winter Wolf)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Город</column>
+            <where>name = 'Зомби (Zombie)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Зомби Бехолдер (Beholder Zombie)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Зорн (Xorn)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес</column>
+            <where>name = 'Игловая Зараза (Needle Blight)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Извечный морозный великан [Frost giant everlasting one]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Имп (Imp)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Иссохший Гнолл [Gnoll Witherling]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня</column>
+            <where>name = 'Ифрит (Efreeti)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье</column>
+            <where>name = 'Йети (Yeti)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Йочлол (Yochlol)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Равнина,Холмы</column>
+            <where>name = 'Кабан (Boar)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Равнина,Холмы</column>
+            <where>name = 'Кабан-оборотень (Wereboar)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Кабашни (Nalfeshnee)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Город</column>
+            <where>name = 'Камбион (Cambion)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Холмы,Горы,Подземье</column>
+            <where>name = 'Каменный великан (Stone Giant)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Каменный великан сноходец [Stone giant dreamwalker]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Каменный голем (Stone Golem)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье,Побережье,Пустыня,Лес,Холмы,Город</column>
+            <where>name = 'Капитан Бандитов (Bandit Captain)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Карга аннис [Annis hag]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Карга бьёр [Bheur hag]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Катоблепас [Catoblepas]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Квадрон (Quadrone)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Квиклинг [Quickling]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Квиппер (Quipper)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Город</column>
+            <where>name = 'Кенку (Kenku)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Равнина</column>
+            <where>name = 'Кентавр (Centaur)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Кетцалькоатль [Quetzalcoatlus]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Ки-рин [Ki-rin]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Кит-убийца (Killer Whale)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня,Лес,Равнина,Город</column>
+            <where>name = 'Коатль (Couatl)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье,Побережье,Пустыня,Лес,Холмы,Горы,Болота,Подземье,Город</column>
+            <where>name = 'Кобольд (Kobold)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Кобольд драконий щит [Kobold dragonshield]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Кобольд изобретатель [Kobold inventor]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Кобольд чешуйчатый чародей [Kobold scale sorcerer]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Равнина,Холмы,Горы,Город</column>
+            <where>name = 'Коза (Goat)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Равнина</column>
+            <where>name = 'Кокатрис (Cockatrice)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Колючий Дьявол (Spined Devil)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Колючка [Thorny]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Корова [Cow]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Король/Королева ящериц (Lizard King/Queen)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Корред [Korred]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Костяной Дьявол (Bone Devil)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Костяной Дьявол Копьеносец (Bone Devil Polearm)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Костяной Нага Дух (Bone Naga Spirit)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Костяной Нага Страж (Bone Naga Guardian)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня,Лес,Равнина,Город</column>
+            <where>name = 'Кошка (Cat)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Кошмар (Nightmare)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Кошмар в шлеме (Helmed Horror)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Побережье</column>
+            <where>name = 'Краб (Crab)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Кракен (Kraken)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Красный Слаад (Red Slaad)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Красный колпак [Redcap]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Красный полудракон ветеран (Half-Red Dragon Veteran)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье,Побережье,Лес,Равнина,Холмы,Горы</column>
+            <where>name = 'Кровавый Ястреб (Blood Hawk)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Болота,Город</column>
+            <where>name = 'Крокодил (Crocodile)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Крошечный слуга [Tiny Servant]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье,Побережье,Пустыня,Лес,Холмы,Горы,Болота,Подземье,Город</column>
+            <where>name = 'Крылатый кобольд (Winged Kobold)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Болота,Город</column>
+            <where>name = 'Крыса (Rat)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Город</column>
+            <where>name = 'Крыса-оборотень (Wererat)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Крючковатый ужас (Hook Horror)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Ксварт [Xvart]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Ксварт колдун Раксиворта [Xvart warlock of Raxivort]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Куаггот (Quaggoth)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Куаггот Тонот (Quaggoth Thonot)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Куаггот служитель спор (Quaggoth Spore Servant)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Куазит (Quasit)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Город</column>
+            <where>name = 'Культист (Cultist)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Куо-тоа (Kuo-toa)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Куо-тоа Кнут (Kuo-toa Whip)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Куо-тоа архисвященник (Kuo-toa Archpriest)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Куо-тоа староста (Kuo-toa Monitor)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня</column>
+            <where>name = 'Ламия (Lamia)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня,Равнина,Холмы,Горы</column>
+            <where>name = 'Лев (Lion)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Ледяной Дьявол (Ice Devil)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Ледяной Дьявол-Копейщик (Ice Devil Spear)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье</column>
+            <where>name = 'Ледяной мефит (Ice Mephit)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Лекротта [Leucrotta]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Лемур (Lemure)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Лесная Вайда [Wood Woad]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня,Лес,Равнина,Город</column>
+            <where>name = 'Летающая змея (Flying Snake)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Летающий меч (Flying Sword)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Летучая мышь (Bat)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Лич (Lich)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Равнина,Холмы</column>
+            <where>name = 'Лось (Elk)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Город</column>
+            <where>name = 'Лошадь (Draft Horse)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Болота</column>
+            <where>name = 'Людоящер (Lizardfolk)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Болота</column>
+            <where>name = 'Людоящер-шаман (Lizardfolk Shaman)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Лягемот [Froghemoth]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Лягушка (Frog)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Город</column>
+            <where>name = 'Маг (Mage)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Магмин (Magmin)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Магмовый мефит (Magma Mephit)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье</column>
+            <where>name = 'Мамонт (Mammoth)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Манз (Manes)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье,Побережье,Равнина,Холмы,Горы</column>
+            <where>name = 'Мантикора (Manticore)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Мантия (Cloaker)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Побережье,Подземье</column>
+            <where>name = 'Марид (Marid)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Марилит (Marilith)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Холмы,Город</column>
+            <where>name = 'Мастиф (Mastiff)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье,Лес,Холмы</column>
+            <where>name = 'Медведь-оборотень (Werebear)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня</column>
+            <where>name = 'Медуза (Medusa)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Меззолот (Mezzoloth)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Побережье,Подземье</column>
+            <where>name = 'Мерроу (Merrow)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Мертвый Слаад (Death Slaad)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес</column>
+            <where>name = 'Мерцающий Пес (Blink Dog)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Миконид Монарх (Myconid Sovereign)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Миконид росток (Myconid Sprout)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье,Город</column>
+            <where>name = 'Мимик (Mimic)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Минлок [Meenlock]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Минотавр (Minotaur)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье</column>
+            <where>name = 'Молодой Белый Дракон (Young White Dragon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Побережье</column>
+            <where>name = 'Молодой Бронзовый Дракон (Young Bronze Dragon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес</column>
+            <where>name = 'Молодой Зеленый Дракон (Young Green Dragon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Равнина</column>
+            <where>name = 'Молодой Золотой Дракон (Young Gold Dragon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Холмы,Горы</column>
+            <where>name = 'Молодой Красный Дракон (Young Red Dragon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Молодой Красный Дракон Тень (Young Red Shadow Dragon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня</column>
+            <where>name = 'Молодой Латунный Дракон (Young Brass Dragon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Холмы</column>
+            <where>name = 'Молодой Медный Дракон (Young Copper Dragon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье</column>
+            <where>name = 'Молодой Реморхаз (Young Remorhaz)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Горы,Город</column>
+            <where>name = 'Молодой Серебряный Дракон (Young Silver Dragon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Побережье,Пустыня</column>
+            <where>name = 'Молодой Синий Дракон (Young Blue Dragon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Болота</column>
+            <where>name = 'Молодой Черный Дракон (Young Black Dragon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Монодрон (Monodrone)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Моркот [Morkoth]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье,Горы</column>
+            <where>name = 'Морозный великан (Frost Giant)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Побережье,Подземье</column>
+            <where>name = 'Морская ведьма (Sea Hag)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Морское отродье [Sea spawn]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Морской конек (Sea Horse)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня,Холмы,Город</column>
+            <where>name = 'Мул (Mule)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня</column>
+            <where>name = 'Мумия (Mummy)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня</column>
+            <where>name = 'Мумия лорд (Mummy Lord)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Мясной голем (Flesh Golem)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Наблюдатель (Spectator)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Нага Дух (Spirit Naga)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня,Лес</column>
+            <where>name = 'Нага страж (Guardian Naga)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Город</column>
+            <where>name = 'Невидимый сталкер (Invisible Stalker)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Неоги [Neogi]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Неоги личинка [Neogi hatchling]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Неоги повелитель [Neogi master]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Неотелид [Neothelid]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Никалот (Nycaloth)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Нилбог [Nilbog]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Равнина</column>
+            <where>name = 'Носорог (Rhinoceros)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Нотик (Nothic)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Ночная ведьма (Night Hag)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес</column>
+            <where>name = 'Обезьяна (Ape)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Горы</column>
+            <where>name = 'Облачный Великан (Cloud giant)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье,Побережье,Пустыня,Лес,Равнина,Холмы,Город</column>
+            <where>name = 'Обыватель (Commoner)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Огненная змея (Fire Snake)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня</column>
+            <where>name = 'Огненный Элементаль (Fire Elemental)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Горы,Подземье</column>
+            <where>name = 'Огненный великан (Fire Giant)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Огненный тритон воин [Firenewt warrior]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Огненный тритон колдун Имикса [Firenewt warlock of Imix]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Огненный череп (Flameskull)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье,Побережье,Пустыня,Лес,Равнина,Холмы,Горы,Болота,Подземье</column>
+            <where>name = 'Огр (Ogre)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Огр-зомби (Ogre Zombie)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Оживший Доспех (Animated Armor)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Равнина</column>
+            <where>name = 'Олень (Deer)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Город</column>
+            <where>name = 'Они (Oni)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Побережье,Равнина,Холмы,Горы</column>
+            <where>name = 'Орел (Eagle)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье,Лес,Равнина,Холмы,Горы,Болота,Подземье</column>
+            <where>name = 'Орк (Orc)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье,Лес,Равнина,Холмы,Горы,Болота,Подземье</column>
+            <where>name = 'Орк Глаз Груумша (Orc Eye of Gruumsh)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Орк вскормленный Юртруса [Orc nurtured one of Yurtrus]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Орк клинок Илневала [Orc blade of Ilneval]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Орк коготь Лутика [Orc claw of Luthic]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Орк красный клык Шаргааса [Orc red fang of Shargaas]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Орк рука Юртруса [Orc hand of Yurtrus]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Орк-командир (Orc War Chief)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье,Лес,Равнина,Холмы,Горы,Подземье</column>
+            <where>name = 'Орог (Orog)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Осьминог (Octopus)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье</column>
+            <where>name = 'Отвратительный Йети (Abominable Yeti)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Отидж (Otyugh)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Отпрыск глубин [Deep scion]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Охряное желе (Ochre jelly)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Равнина,Холмы</column>
+            <where>name = 'Пантера (Panther)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Паровой мефит (Steam Mephit)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Пасть Гролантора [Mouth of Grolantor]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Паук (Spider)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Равнина,Холмы</column>
+            <where>name = 'Пегас (Pegasus)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Пентадрон (Pentadrone)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Холмы,Горы</column>
+            <where>name = 'Перитон (Peryton)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня</column>
+            <where>name = 'Пес Смерти (Death Dog)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Пещерный Медведь (Cave Bear)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Пещерный удильщик [Cave fisher]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес</column>
+            <where>name = 'Пикси (Pixie)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Планетар (Planetar)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Побережье,Подземье</column>
+            <where>name = 'Плесиозавр (Plesiosaurus)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Пожиратель [Devourer]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Пожиратель разума (Intellect Devourer)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Пожиратель разума (Mind Flayer)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Пожиратель разума заклинатель (Mind Flayer Arcanist)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Болота</column>
+            <where>name = 'Ползущая насыпь (Shambling Mound)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Ползущий Коготь (Crawling Claw)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Ползущий Падальшик (Carrion Crawler)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Полтергейст (Poltergeist)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня,Лес,Холмы,Горы,Подземье,Заполярье</column>
+            <where>name = 'Полуогр (Огриллон) (Half-Ogre (Ogrillon))'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Город</column>
+            <where>name = 'Пони (Pony)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Порождения Кьюсса [Spawn of Kyuss]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Поцелуй смерти [Death kiss]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье,Город</column>
+            <where>name = 'Призрак (Ghost)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня,Лес,Равнина,Холмы,Подземье,Город</column>
+            <where>name = 'Призрачный паук (Phase Spider)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Протыкатель (Piercer)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Побережье,Пустыня,Лес,Холмы,Горы,Город</column>
+            <where>name = 'Псевдодракон (Pseudodragon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Побережье,Равнина,Горы</column>
+            <where>name = 'Птеранодон (Pteranodon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Равнина</column>
+            <where>name = 'Пугало (Scarecrow)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня,Подземье</column>
+            <where>name = 'Пурпурный червь (Purple Worm)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня</column>
+            <where>name = 'Пылевой мефит (Dust Mephit)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес</column>
+            <where>name = 'Разбуженное Дерево (Awakened Tree)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес</column>
+            <where>name = 'Разбуженный Куст (Awakened Shrub)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье,Побережье,Пустыня,Лес,Равнина,Холмы,Горы,Болота,Подземье</column>
+            <where>name = 'Разведчик (Scout)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Город</column>
+            <where>name = 'Ракшаса (Rakshasa)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье,Пустыня,Лес,Холмы,Болота,Город</column>
+            <where>name = 'Ревенант (Revenant)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье</column>
+            <where>name = 'Реморхаз (Remorhaz)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Ржавый монстр (Rust Monster)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Рифовая акула (Reef Shark)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Рогатый Дьявол (Horned Devil)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Рой Квипперов (Swarm of Quippers)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Холмы,Болота,Город</column>
+            <where>name = 'Рой воронов (Swarm of Ravens)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Рой жуков (Swarm of Beetles)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Болота,Город</column>
+            <where>name = 'Рой крыс (Swarm of Rats)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Холмы,Горы,Подземье,Город</column>
+            <where>name = 'Рой летучих мышей (Swarm of Bats)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Рой многоножек (Swarm of Centipedes)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня,Лес,Равнина,Холмы,Болота,Подземье,Город</column>
+            <where>name = 'Рой насекомых (Swarm of Insects)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Рой ос (Swarm of Wasps)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Рой пауков (Swarm of Spiders)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Рой трупных личинок [Swarm of Rot Grubs]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Болота</column>
+            <where>name = 'Рой ядовитых змей (Swarm of Poisonous Snakes)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Ропер (Roper)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Побережье,Подземье</column>
+            <where>name = 'Русалка (Merfolk)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье,Побережье,Пустыня,Холмы,Горы</column>
+            <where>name = 'Рух (Roc)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Город</column>
+            <where>name = 'Рыцарь (Knight)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Рыцарь смерти (Death Knight)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье,Горы</column>
+            <where>name = 'Саблезубый тигр (Saber-Toothed Tiger)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Саламандра (Salamander)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес</column>
+            <where>name = 'Сатир (Satyr)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Побережье,Подземье</column>
+            <where>name = 'Сахуагин (Sahuagin)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Побережье,Подземье</column>
+            <where>name = 'Сахуагин барон (Sahuagin Baron)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Побережье,Подземье</column>
+            <where>name = 'Сахуагин жрица (Sahuagin Priestess)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Свидетель разума [Mindwitness]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Равнина,Холмы</column>
+            <where>name = 'Секироклюв (Axe Beak)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Серая слизь (Gray Ooze)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Серая слизь с атакой психики (Gray Ooze Psychic)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Город</column>
+            <where>name = 'Серый слаад (Gray Slaad)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Синий Слаад (Blue Slaad)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Равнина,Город</column>
+            <where>name = 'Скаковая лошадь (Riding Horse)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Город</column>
+            <where>name = 'Скелет (Skeleton)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Скелет боевого коня (Warhorse Skeleton)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Скелет-минотавр (Minotaur Skeleton)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Склизкий преследователь [Slithering tracker]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня</column>
+            <where>name = 'Скорпион (Scorpion)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Слаад головастик (Slaad Tadpole)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Равнина</column>
+            <where>name = 'Слон (Elephant)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Город</column>
+            <where>name = 'Служитель (Acolyte)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес</column>
+            <where>name = 'Смещающий зверь (Displacer Beast)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Смотрящий [Gazer]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье,Лес</column>
+            <where>name = 'Сова (Owl)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес</column>
+            <where>name = 'Совомедведь (Owlbear)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Солар (Solar)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье,Город</column>
+            <where>name = 'Спектр (Specter)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Старейшина дарклингов [Darkling elder]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Старший мозг [Elder brain]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Стая черепных крыс [Swarm of cranium rats]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Стегозавр [Stegosaurus]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Сторожевой дрейк [Guard drake]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Город</column>
+            <where>name = 'Страж-щитоносец (Shield Guardian)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Побережье,Пустыня,Лес,Равнина,Холмы,Горы,Город</column>
+            <where>name = 'Стражник (Guard)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Холмы</column>
+            <where>name = 'Страшный волк (Dire Wolf)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Побережье,Пустыня,Лес,Равнина,Холмы,Горы,Болота,Подземье,Город</column>
+            <where>name = 'Стридж (Stirge)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Город</column>
+            <where>name = 'Суккуб/Инкуб (Succubus/Incubus)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Танарукк [Tanarukk]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Город</column>
+            <where>name = 'Тараска (Tarrasque)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Темная мантия (Darkmantle)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Теневой демон (Shadow Demon)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Теневой мастифф [Shadow mastiff]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье,Город</column>
+            <where>name = 'Тень (Shadow)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес,Равнина</column>
+            <where>name = 'Тигр (Tiger)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня,Лес,Равнина</column>
+            <where>name = 'Тигр-оборотен (Weretiger)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Тиран Смерти (Death Tyrant)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Равнина</column>
+            <where>name = 'Тиранозавр (Tyrannosaurus Rex)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Тлинкалли [Tlincalli]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Траппер [Trapper]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня,Равнина</column>
+            <where>name = 'Три-крин (Thri-kreen)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Три-крин псионик (Thri-kreen Psionic)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Тридрон (Tridrone)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Равнина</column>
+            <where>name = 'Трицератопс (Triceratops)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Троглодит (Troglodyte)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Заполярье,Лес,Холмы,Горы,Болота,Подземье</column>
+            <where>name = 'Тролль (Troll)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Тур [Aurochs]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня,Лес,Болота,Подземье</column>
+            <where>name = 'Удав (Constrictor Snake)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Удушающий ковер (Rug of Smothering)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Улитарид [Ulitharid]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Улыбающийся облачный великан [Cloud giant smiling one]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Ультролот (Ultroloth)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня,Болота,Подземье,Город</column>
+            <where>name = 'Упырь (Wight)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Утробный демон [Maw demon]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Город</column>
+            <where>name = 'Фанатик (Cult Fanatic)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес</column>
+            <where>name = 'Фейский Дракон Голубой (Faerie Dragon Blue)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Фейский Дракон Желтый (Faerie Dragon Yellow)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Фейский Дракон Зеленый (Faerie Dragon Green)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Фейский Дракон Красный (Faerie Dragon Red)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Фейский Дракон Оранжевый (Faerie Dragon Orange)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Фейский Дракон Синий (Faerie Dragon Indigo)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Фейский Дракон Фиолетовый (Faerie Dragon Violet)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес</column>
+            <where>name = 'Фея (Sprite)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Фиолетовая плесень (Violet Fungus)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Фламп (Flumph)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Флинд [Flind]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Фомориан (Fomorian)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Хезроу (Hezrou)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Равнина,Холмы,Горы,Подземье</column>
+            <where>name = 'Химера (Chimera)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Хитин [Chitine]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня,Лес,Равнина,Холмы,Подземье</column>
+            <where>name = 'Хобгоблин (Hobgoblin)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Хобгоблин военачальник (Hobgoblin Warlord)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Хобгоблин железная тень [Hobgoblin iron shadow]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня,Лес,Равнина,Холмы,Подземье</column>
+            <where>name = 'Хобгоблин капитан (Hobgoblin Captain)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Хобгоблин опустошитель [Hobgoblin devastator]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Холдрит [Choldrith]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Холмы</column>
+            <where>name = 'Холмовой великан (Hill Giant)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Цепной Дьявол (Chain Devil)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Цеповая улитка [Flail snail]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Побережье,Пустыня,Равнина,Холмы,Горы,Подземье</column>
+            <where>name = 'Циклоп (Cyclops)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Черепные крыса [Cranium rat]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Черный Пудинг (Black Pudding)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня,Лес,Болота,Город</column>
+            <where>name = 'Чистокровный Юан-ти (Yuan-ti Pureblood)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Подземье</column>
+            <where>name = 'Чуул (Chuul)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес</column>
+            <where>name = 'Чёрный медведь (Black Bear)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня,Равнина</column>
+            <where>name = 'Шакал (Jackal)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня,Равнина</column>
+            <where>name = 'Шакал-оборотень (Jackalwere)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Шипастый Дьявол (Barbed Devil)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Город</column>
+            <where>name = 'Шпион (Spy)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Побережье,Подземье</column>
+            <where>name = 'Штормовой великан (Storm Giant)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Штормовой великан квинтэссент [Storm giant quintessent]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Шусува [Shoosuva]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Элитный воин грунгов [Grung elite warrior]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Эмпирей (Empyrean)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес</column>
+            <where>name = 'Энт (Treant)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Эриний (Erinyes)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Лес</column>
+            <where>name = 'Эттеркап (Ettercap)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Холмы,Горы,Подземье</column>
+            <where>name = 'Эттин (Ettin)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня,Лес,Болота</column>
+            <where>name = 'Юан-ти Форма проклятия 1 (Yuan-ti Malison Type 1)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Юан-ти Форма проклятия 2 (Yuan-ti Malison Type 2)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Юан-ти Форма проклятия 3 (Yuan-ti Malison Type 3)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Пустыня,Лес,Болота</column>
+            <where>name = 'Юан-ти мерзость (Yuan-ti Abomination)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Побережье,Пустыня,Лес,Равнина,Холмы,Болота</column>
+            <where>name = 'Ядовитая змея (Poisonous Snake)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Яман (Chasme)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Ястреб (Hawk)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'Ящерица (Lizard)'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'юань-ти анафема [Yuan-ti anathema]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'юань-ти говорящая в кошмарах [Yuan-ti nightmare speaker]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'юань-ти страж выводка [Yuan-ti broodguard]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'юань-ти хозяин ямы [Yuan-ti pit master]'</where>
+        </update>
+        <update tableName="tb_monsters">
+            <column name="bioms">Все</column>
+            <where>name = 'юань-ти шепчущий в мыслях [Yuan-ti mind whisperer]'</where>
+        </update>
+
+    </changeSet>
+
+    <changeSet id="3" author="drudenko">
+        <sql>
+            UPDATE tb_traits SET text = REPLACE ( text, '[', '' );
+            UPDATE tb_actions SET text = REPLACE ( text, '[', '' );
+            UPDATE tb_traits SET text = REPLACE ( text, ']', '' );
+            UPDATE tb_actions SET text = REPLACE ( text, ']', '' );
+        </sql>
+    </changeSet>
+
+    <changeSet id="4" author="drudenko">
+        <sql>
+            UPDATE tb_traits SET attack = REPLACE ( attack, '[', '' );
+            UPDATE tb_actions SET attack = REPLACE ( attack, '[', '' );
+            UPDATE tb_traits SET attack = REPLACE ( attack, ']', '' );
+            UPDATE tb_actions SET attack = REPLACE ( attack, ']', '' );
+        </sql>
+    </changeSet>
+
+    <changeSet id="5" author="drudenko">
+        <addColumn tableName="tb_spells">
+            <column name="name_en" type="varchar(255)"/>
+        </addColumn>
+
+        <update tableName="tb_spells">
+            <column name="name_en">ACID SPLASH</column>
+            <where>name = 'БРЫЗГИ КИСЛОТЫ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MAGE HAND</column>
+            <where>name = 'ВОЛШЕБНАЯ РУКА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MAGIC STONE</column>
+            <where>name = 'ВОЛШЕБНЫЙ КАМЕНЬ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SWORD BURST</column>
+            <where>name = 'ВСПЫШКА МЕЧЕЙ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">BOOMING BLADE</column>
+            <where>name = 'ГРОМОВОЙ КЛИНОК'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">FRIENDS</column>
+            <where>name = 'ДРУЖБА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SHILLELAGH</column>
+            <where>name = 'ДУБИНКА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">BLADE WARD</column>
+            <where>name = 'ЗАЩИТА ОТ ОРУЖИЯ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">VICIOUS MOCKERY</column>
+            <where>name = 'ЗЛАЯ НАСМЕШКА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MOLD PLANT</column>
+            <where>name = 'ИЗМЕНЕНИЕ РАСТЕНИЙ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MOLD EARTH</column>
+            <where>name = 'ИЗМЕНИТЬ ЗЕМЛЮ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">DRUIDCRAFT</column>
+            <where>name = 'ИСКУССТВО ДРУИДОВ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">GREEN-FLAME BLADE</column>
+            <where>name = 'КЛИНОК ЗЕЛЕНОГО ПЛАМЕНИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">LIGHTNING LURE</column>
+            <where>name = 'ЛАССО МОЛНИИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CHILL TOUCH</column>
+            <where>name = 'ЛЕДЕНЯЩЕЕ ПРИКОСНОВЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">RAY OF FROST</column>
+            <where>name = 'ЛУЧ ХОЛОДА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MINOR ILLUSION</column>
+            <where>name = 'МАЛАЯ ИЛЛЮЗИЯ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SHAPE WATER</column>
+            <where>name = 'МАНИПУЛИРОВАНИЕ ВОДОЙ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">TRUE STRIKE</column>
+            <where>name = 'МЕТКИЙ УДАР'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ELDRITCH BLAST</column>
+            <where>name = 'МИСТИЧЕСКИЙ ЗАРЯД'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">INFESTATION</column>
+            <where>name = 'НАШЕСТВИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">FROSTBITE</column>
+            <where>name = 'ОБМОРОЖЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">FIRE BOLT</column>
+            <where>name = 'ОГНЕННЫЙ СНАРЯД'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">BONDING VINE</column>
+            <where>name = 'ОПЛЕТАЮЩАЯ ЛОЗА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">PRIMAL SAVAGERY</column>
+            <where>name = 'ПЕРВОБЫТНАЯ ДИКОСТЬ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">DANCING LIGHTS</column>
+            <where>name = 'ПЛЯШУЩИЕ ОГОНЬКИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">TOLL THE DEAD</column>
+            <where>name = 'ПОГРЕБАЛЬНЫЙ ЗВОН'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MENDING</column>
+            <where>name = 'ПОЧИНКА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">PIERCING THORN</column>
+            <where>name = 'ПРОНЗАЮЩИЙ ШИП'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">LIGHT</column>
+            <where>name = 'СВЕТ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SACRED FLAME</column>
+            <where>name = 'СВЯЩЕННОЕ ПЛАМЯ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">WORD OF RADIANCE</column>
+            <where>name = 'СЛОВО СИЯНИЯ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CREATE BONFIRE</column>
+            <where>name = 'СОЗДАТЬ КОСТЕР'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MESSAGE</column>
+            <where>name = 'СООБЩЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">RESISTANCE</column>
+            <where>name = 'СОПРОТИВЛЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">PRODUCE FLAME</column>
+            <where>name = 'СОТВОРЕНИЕ ПЛАМЕНИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">THORN WHIP</column>
+            <where>name = 'ТЕРНОВЫЙ КНУТ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">THUNDERCLAP</column>
+            <where>name = 'УДАР ГРОМА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">GUIDANCE</column>
+            <where>name = 'УКАЗАНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CONTROL FLAMES</column>
+            <where>name = 'УПРАВЛЕНИЕ ПЛАМЕНЕМ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SPARE THE DYING</column>
+            <where>name = 'УХОД ЗА УМИРАЮЩИМ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">PRESTIDIGITATION</column>
+            <where>name = 'ФОКУСЫ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">GRASPING SPROUT</column>
+            <where>name = 'ЦЕПКИЙ РОСТОК'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">THAUMATURGY</column>
+            <where>name = 'ЧУДОТВОРСТВО'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">THORN SHIELD</column>
+            <where>name = 'ШИПАСТЫЙ ЩИТ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">GUST</column>
+            <where>name = 'ШКВАЛ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SHOCKING GRASP</column>
+            <where>name = 'ЭЛЕКТРОШОК'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">POISON SPRAY</column>
+            <where>name = 'ЯДОВИТЫЕ БРЫЗГИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">HELLISH REBUKE</column>
+            <where>name = 'АДСКОЕ ВОЗМЕЗДИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SILENT IMAGE</column>
+            <where>name = 'БЕЗМОЛВНЫЙ ОБРАЗ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">BLESS</column>
+            <where>name = 'БЛАГОСЛОВЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">DIVINE FAVOR</column>
+            <where>name = 'БОЖЕСТВЕННОЕ БЛАГОВОЛЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">WITCH BOLT</column>
+            <where>name = 'ВЕДЬМИН СНАРЯД'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">THUNDERWAVE</column>
+            <where>name = 'ВОЛНА ГРОМА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MAGIC MISSILE</column>
+            <where>name = 'ВОЛШЕБНАЯ СТРЕЛА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">COMPELLED DUEL</column>
+            <where>name = 'ВЫЗОВ НА ДУЭЛЬ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CAUSE FEAR</column>
+            <where>name = 'ВЫЗОВ СТРАХА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">HEROISM</column>
+            <where>name = 'ГЕРОИЗМ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">WRATHFUL SMITE</column>
+            <where>name = 'ГНЕВНАЯ КАРА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">HAIL OF THORNS</column>
+            <where>name = 'ГРАД ШИПОВ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">THUNDEROUS SMITE</column>
+            <where>name = 'ГРОМОВАЯ КАРА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ARMOR OF AGATHYS</column>
+            <where>name = 'ДОСПЕХ АГАТИСА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ARMOR OF AGATHYA</column>
+            <where>name = 'ДОСПЕХИ АГАТИСА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MAGE ARMOR</column>
+            <where>name = 'ДОСПЕХИ МАГА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CEREMONY</column>
+            <where>name = 'ДРЕВЕСНЫЙ ЗАХВАТ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">BRIDGE OF BRANCHES</column>
+            <where>name = 'ДРЕВЕСНЫЙ МОСТ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">EARTH TREMOR</column>
+            <where>name = 'ДРОЖЬ ЗЕМЛИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ANIMAL FRIENDSHIP</column>
+            <where>name = 'ДРУЖБА С ЖИВОТНЫМИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">TASHA'S HIDEOUS LAUGHTER</column>
+            <where>name = 'ЖУТКИЙ СМЕХ ТАШИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">OVERGROWTH</column>
+            <where>name = 'ЗАРОСЛИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">PROTECTION FROM EVIL AND GOOD</column>
+            <where>name = 'ЗАЩИТА ОТ ДОБРА И ЗЛА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CATAPULT</column>
+            <where>name = 'КАТАПУЛЬТА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ICE KNIFE</column>
+            <where>name = 'ЛЕДЯНОЙ НОЖ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">HEALING WORD</column>
+            <where>name = 'ЛЕЧАЩЕЕ СЛОВО'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CURE WOUNDS</column>
+            <where>name = 'ЛЕЧЕНИЕ РАН'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">RAY OF SICKNESS</column>
+            <where>name = 'ЛУЧ БОЛЕЗНИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">DISGUISE SELF</column>
+            <where>name = 'МАСКИРОВКА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">HUNTER'S MARK</column>
+            <where>name = 'МЕТКА ОХОТНИКА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">INFLICT WOUNDS</column>
+            <where>name = 'НАНЕСЕНИЕ РАН'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">GUIDING BOLT</column>
+            <where>name = 'НАПРАВЛЕННЫЙ СНАРЯД'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ILLUSORY SCRIPT</column>
+            <where>name = 'НЕВИДИМОЕ ПИСЬМО'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">UNSEEN SERVANT</column>
+            <where>name = 'НЕВИДИМЫЙ СЛУГА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">DETECT POISON AND DISEASE</column>
+            <where>name = 'ОБНАРУЖЕНИЕ БОЛЕЗНЕЙ И ЯДА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">DETECT EVIL AND GOOD</column>
+            <where>name = 'ОБНАРУЖЕНИЕ ДОБРА И ЗЛА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">DETECT MAGIC</column>
+            <where>name = 'ОБНАРУЖЕНИЕ МАГИИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">BURNING HANDS</column>
+            <where>name = 'ОГНЕННЫЕ ЛАДОНИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">FAERIE FIRE</column>
+            <where>name = 'ОГОНЬ ФЕЙ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">IDENTIFY</column>
+            <where>name = 'ОПОЗНАНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ENTANGLE</column>
+            <where>name = 'ОПУТЫВАНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ENSNARING STRIKE</column>
+            <where>name = 'ОПУТЫВАЮЩИЙ УДАР'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SLICING LEAVES</column>
+            <where>name = 'ОСТРЫЕ ЛИСТЬЯ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CHARM PERSON</column>
+            <where>name = 'ОЧАРОВАНИЕ ЛИЧНОСТИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">PURIFY FOOD AND DRINK</column>
+            <where>name = 'ОЧИЩЕНИЕ ПИЩИ И ПИТЬЯ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">FEATHER FALL</column>
+            <where>name = 'ПАДЕНИЕ ПЁРЫШКОМ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SEARING SMITE</column>
+            <where>name = 'ПАЛЯЩАЯ КАРА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ABSORB ELEMENTS</column>
+            <where>name = 'ПОГЛОЩЕНИЕ СТИХИЙ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">FIND FAMILIAR</column>
+            <where>name = 'ПОИСК ФАМИЛЬЯРА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">COMPREHEND LANGUAGES</column>
+            <where>name = 'ПОНИМАНИЕ ЯЗЫКОВ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">BANE</column>
+            <where>name = 'ПОРЧА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">EXPEDITIOUS RETREAT</column>
+            <where>name = 'ПОСПЕШНОЕ ОТСТУПЛЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">COMMAND</column>
+            <where>name = 'ПРИКАЗ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">JUMP</column>
+            <where>name = 'ПРЫЖОК'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">FALSE LIFE</column>
+            <where>name = 'ПСЕВДОЖИЗНЬ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SPEAK WITH ANIMALS</column>
+            <where>name = 'РАЗГОВОР С ЖИВОТНЫМИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">GAEA’S HAND</column>
+            <where>name = 'РУКА ГАИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ARMS OF HADAR</column>
+            <where>name = 'РУКИ ХАДАРА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">COLOR SPRAY</column>
+            <where>name = 'СВЕРКАЮЩИЕ БРЫЗГИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">BEAST BOND</column>
+            <where>name = 'СВЯСЬ СО ЗВЕРЕМ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">HEX</column>
+            <where>name = 'СГЛАЗ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ALARM</column>
+            <where>name = 'СИГНАЛ ТРЕВОГИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SNARE</column>
+            <where>name = 'СИЛОК'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">GREASE</column>
+            <where>name = 'СКОЛЬЖЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">LONGSTRIDER</column>
+            <where>name = 'СКОРОХОД'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CHAOS BOLT</column>
+            <where>name = 'СНАРЯД ХАОСА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CREATE OR DESTROY WATER</column>
+            <where>name = 'СОТВОРЕНИЕ ИЛИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">RAPPORT SPORES</column>
+            <where>name = 'СПОРЫ ТЕЛЕПАТИИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">TENSER'S FLOATING DISK</column>
+            <where>name = 'ТЕНЗЕРОВ ПАРЯЩИЙ ДИСК'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">FOG CLOUD</column>
+            <where>name = 'ТУМАННОЕ ОБЛАКО'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SANCTUARY</column>
+            <where>name = 'УБЕЖИЩЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ZEPHYR STRIKE</column>
+            <where>name = 'УДАР ЗЕФИРА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SLEEP</column>
+            <where>name = 'УСЫПЛЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CHROMATIC ORB</column>
+            <where>name = 'ЦВЕТНОЙ ШАРИК'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CEREMONY</column>
+            <where>name = 'ЦЕРЕМОНИЯ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">GOODBERRY</column>
+            <where>name = 'ЧУДО-ЯГОДЫ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">DISSONANT WHISPERS</column>
+            <where>name = 'ШЕПОТ ДИССОНАНСА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SHIELD</column>
+            <where>name = 'ЩИТ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SHIELD OF FAITH</column>
+            <where>name = 'ЩИТ ВЕРЫ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">PASS WITHOUT TRACE</column>
+            <where>name = 'БЕССЛЕДНОЕ ПЕРЕДВИЖЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SPIRITUAL WEAPON</column>
+            <where>name = 'БОЖЕСТВЕННОЕ ОРУЖИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CONTINUAL FLAME</column>
+            <where>name = 'ВЕЧНЫЙ ОГОНЬ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">EXPLOSIVE SEED</column>
+            <where>name = 'ВЗРЫВНОЕ ЗЕРНО'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SEE INVISIBILITY</column>
+            <where>name = 'ВИДЕНИЕ НЕВИДИМОГО'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SUGGESTION</column>
+            <where>name = 'ВНУШЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MAGIC MOUTH</column>
+            <where>name = 'ВОЛШЕБНЫЕ УСТА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ARCANE LOCK</column>
+            <where>name = 'ВОЛШЕБНЫЙ ЗАМОК'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">PHANTASMAL FORCE</column>
+            <where>name = 'ВООБРАЖАЕМАЯ СИЛА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">AUGURY</column>
+            <where>name = 'ГАДАНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">BLINDNESS/DEAFNESS</column>
+            <where>name = 'ГЛУХОТА/СЛЕПОТА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">FLAME BLADE</column>
+            <where>name = 'ГОРЯЩИЙ КЛИНОК'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SHATTER</column>
+            <where>name = 'ДРЕБЕЗГИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">BARKSKIN</column>
+            <where>name = 'ДУБОВАЯ КОРА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">DRAGON’S BREATH</column>
+            <where>name = 'ДЫХАНИЕ ДРАКОНА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">BEAST SENSE</column>
+            <where>name = 'ЖИВОТНЫЕ ЧУВСТВА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CORDON OF ARROWS</column>
+            <where>name = 'ЗАВЕСА СТРЕЛ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SPORECALLER’S SMITE</column>
+            <where>name = 'ЗАРАЖАЮЩИЙ УДАР'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">PROTECTION FROM POISON</column>
+            <where>name = 'ЗАЩИТА ОТ ЯДА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">WARDING WIND</column>
+            <where>name = 'ЗАЩИТНЫЙ ВЕТЕР'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MAXIMILIAN’S EARTHEN GRASP</column>
+            <where>name = 'ЗЕМЛЯНОЙ ЗАХВАТ МАКСИМИЛИАНА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">AGANAZZAR’S SCORCHER</column>
+            <where>name = 'ЗНОЙ АГАНАЗЗАРА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">HEALING SPIRIT</column>
+            <where>name = 'ИСЦЕЛЯЮЩИЙ ДУХ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">BRANDING SMITE</column>
+            <where>name = 'КЛЕЙМЯЩАЯ КАРА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CROWN OF MADNESS</column>
+            <where>name = 'КОРОНА БЕЗУМИЯ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">LEVITATE</column>
+            <where>name = 'ЛЕВИТАЦИЯ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MOONBEAM</column>
+            <where>name = 'ЛУННЫЙ ЛУЧ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">RAY OF ENFEEBLEMENT</column>
+            <where>name = 'ЛУЧ СЛАБОСТИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MAGIC WEAPON</column>
+            <where>name = 'МАГИЧЕСКОЕ ОРУЖИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">LESSER RESTORATION</column>
+            <where>name = 'МАЛОЕ ВОССТАНОВЛЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MELF'S ACID ARROW</column>
+            <where>name = 'МЕЛЬФОВА КИСЛОТНАЯ СТРЕЛА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">PRAYER OF HEALING</column>
+            <where>name = 'МОЛЕБЕН ЛЕЧЕНИЯ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SKYWRITE</column>
+            <where>name = 'НЕБЕСНОЕ ПИСЬМО'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">INVISIBILITY</column>
+            <where>name = 'НЕВИДИМОСТЬ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">GENTLE REPOSE</column>
+            <where>name = 'НЕТЛЕННЫЕ ОСТАНКИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">NYSTUL'S MAGIC AURA</column>
+            <where>name = 'НИСТУЛОВА ЛОЖНАЯ АУРА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CLOUD OF DAGGERS</column>
+            <where>name = 'ОБЛАКО КИНЖАЛОВ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ZONE OF TRUTH</column>
+            <where>name = 'ОБЛАСТЬ ИСТИНЫ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">DETECT THOUGHTS</column>
+            <where>name = 'ОБНАРУЖЕНИЕ МЫСЛЕЙ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">KNOCK</column>
+            <where>name = 'ОТКРЫВАНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MIRROR IMAGE</column>
+            <where>name = 'ОТРАЖЕНИЯ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">WARDING BOND</column>
+            <where>name = 'ОХРАНЯЮЩАЯ СВЯЗЬ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SCORCHING RAY</column>
+            <where>name = 'ПАЛЯЩИЙ ЛУЧ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SPIDER CLIMB</column>
+            <where>name = 'ПАУК'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">WEB</column>
+            <where>name = 'ПАУТИНА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">AGANAEZAR’S SCORCHER</column>
+            <where>name = 'ПЕКЛО АГАНАЗЗАРА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">PYROTECHNICS</column>
+            <where>name = 'ПИРОТЕХНИКА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">AID</column>
+            <where>name = 'ПОДМОГА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">LOCATE ANIMALS OR PLANTS</column>
+            <where>name = 'ПОИСК ЖИВОТНЫХ ИЛИ РАСТЕНИЙ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">FIND TRAPS</column>
+            <where>name = 'ПОИСК ЛОВУШЕК'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">LOCATE OBJECT</column>
+            <where>name = 'ПОИСК ПРЕДМЕТА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">FIND STEED</column>
+            <where>name = 'ПОИСК СКАКУНА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">GUST OF WIND</column>
+            <where>name = 'ПОРЫВ ВЕТРА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ANIMAL MESSENGER</column>
+            <where>name = 'ПОЧТОВОЕ ЖИВОТНОЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">EARTHBIND</column>
+            <where>name = 'ПРИЗЕМЛЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MIND SPIKE</column>
+            <where>name = 'ПРОНЗАНИЕ РАЗУМА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">FLAMING SPHERE</column>
+            <where>name = 'ПЫЛАЮЩИЙ ШАР'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">DUST DEVIL</column>
+            <where>name = 'ПЫЛЕВОЙ ДЬЯВОЛ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">BLUR</column>
+            <where>name = 'РАЗМЫТЫЙ ОБРАЗ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">HEAT METAL</column>
+            <where>name = 'РАСКАЛЁННЫЙ МЕТАЛЛ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ENTHRALL</column>
+            <where>name = 'РЕЧЬ ЗЛАТОУСТА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SNILLOC’S SNOWBALL SWARM</column>
+            <where>name = 'РОЙ СНЕЖКОВ СНИЛЛОКА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ARM OF THE WILD</column>
+            <where>name = 'РУКА-ЛОЗА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ALTER SELF</column>
+            <where>name = 'СМЕНА ОБЛИЧЬЯ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">DARKVISION</column>
+            <where>name = 'ТЁМНОЕ ЗРЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SHADOW BLADE</column>
+            <where>name = 'ТЕНЕВОЙ КЛИНОК'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SILENCE</column>
+            <where>name = 'ТИШИНА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ROPE TRICK</column>
+            <where>name = 'ТРЮК С ВЕРЁВКОЙ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MISTY STEP</column>
+            <where>name = 'ТУМАННЫЙ ШАГ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">DARKNESS</column>
+            <where>name = 'ТЬМА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ENLARGE/REDUCE</column>
+            <where>name = 'УВЕЛИЧЕНИЕ/УМЕНЬШЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">HOLD PERSON</column>
+            <where>name = 'УДЕРЖАНИЕ ЛИЧНОСТИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ENHANCE ABILITY</column>
+            <where>name = 'УЛУЧШЕНИЕ ХАРАКТЕРИСТИКИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CALM EMOTIONS</column>
+            <where>name = 'УМИРОТВОРЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SPIKE GROWTH</column>
+            <where>name = 'ШИПЫ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">AURA OF VITALITY</column>
+            <where>name = 'АУРА ЖИВУЧЕСТИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">REVIVIFY</column>
+            <where>name = 'ВОЗРОЖДЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ANIMATE DEAD</column>
+            <where>name = 'ВОССТАВШИЙ ТРУП'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">GASEOUS FORM</column>
+            <where>name = 'ГАЗООБРАЗНАЯ ФОРМА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">HYPNOTIC PATTERN</column>
+            <where>name = 'ГИПНОТИЧЕСКИЙ УЗОР'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">HUNGER OF HADAR</column>
+            <where>name = 'ГОЛОД ХАДАРА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">THUNDER STEP</column>
+            <where>name = 'ГРОМОВОЙ ШАГ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">DAYLIGHT</column>
+            <where>name = 'ДНЕВНОЙ СВЕТ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CATNAP</column>
+            <where>name = 'ДРЁМА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SPIRIT GUARDIANS</column>
+            <where>name = 'ДУХОВНЫЕ СТРАЖИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SPRAY OF THORNS</column>
+            <where>name = 'ЗАЛП ШИПОВ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SLOW</column>
+            <where>name = 'ЗАМЕДЛЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">PROTECTION FROM ENERGY</column>
+            <where>name = 'ЗАЩИТА ОТ ЭНЕРГИИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">STINKING CLOUD</column>
+            <where>name = 'ЗЛОВОННОЕ ОБЛАКО'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ERUPTING EARTH</column>
+            <where>name = 'ИЗВЕРЖЕНИЕ ЗЕМЛИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ENEMIES ABOUND</column>
+            <where>name = 'ИЗОБИЛИЕ ВРАГОВ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">COUNTERSPELL</column>
+            <where>name = 'КОНТРЗАКЛИНАНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">TINY SERVANT</column>
+            <where>name = 'КРОШЕЧНЫЙ СЛУГА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">LEOMUND'S TINY HUT</column>
+            <where>name = 'ЛЕОМУНДОВА ХИЖИНА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MAGIC CIRCLE</column>
+            <where>name = 'МАГИЧЕСКИЙ КРУГ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CRUSADER'S MANTLE</column>
+            <where>name = 'МАНТИЯ КРЕСТОНОСЦА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">BEACON OF HOPE</column>
+            <where>name = 'МАЯК НАДЕЖДЫ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MELF’S MINUTE METEORS</column>
+            <where>name = 'МЕЛКИЕ МЕТЕОРЫ МЕЛФА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">BLINK</column>
+            <where>name = 'МЕРЦАНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SLEET STORM</column>
+            <where>name = 'МЕТЕЛЬ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MASS HEALING WORD</column>
+            <where>name = 'МНОЖЕСТВЕННОЕ ЛЕЧАЩЕЕ СЛОВО'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">LIGHTNING ARROW</column>
+            <where>name = 'МОЛНИЕВАЯ СТРЕЛА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">LIGHTNING BOLT</column>
+            <where>name = 'МОЛНИЯ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">NONDETECTION</column>
+            <where>name = 'НЕОБНАРУЖИМОСТЬ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MAJOR IMAGE</column>
+            <where>name = 'ОБРАЗ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">FIREBALL</column>
+            <where>name = 'ОГНЕННЫЙ ШАР'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ENGULFING THORNS</column>
+            <where>name = 'ОПУТЫВАЮЩИЕ ТЕРНИИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">BLINDING SMITE</column>
+            <where>name = 'ОСЛЕПЛЯЮЩАЯ КАРА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">GLYPH OF WARDING</column>
+            <where>name = 'ОХРАННЫЕ РУНЫ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">FELL</column>
+            <where>name = 'ПАДЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">LIFE TRANSFERENCE</column>
+            <where>name = 'ПЕРЕДАЧА ЖИЗНИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">WALL OF SAND</column>
+            <where>name = 'ПЕСЧАНАЯ СТЕНА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">FLAME ARROWS</column>
+            <where>name = 'ПЛАМЕННЫЕ СТРЕЛЫ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">WATER BREATHING</column>
+            <where>name = 'ПОДВОДНОЕ ДЫХАНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CLAIRVOYANCE</column>
+            <where>name = 'ПОДСМАТРИВАНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">FLY</column>
+            <where>name = 'ПОЛЁТ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SENDING</column>
+            <where>name = 'ПОСЛАНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CONJURE ANIMALS</column>
+            <where>name = 'ПРИЗЫВ ЖИВОТНЫХ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CONJURE BARRAGE</column>
+            <where>name = 'ПРИЗЫВ ЗАГРАЖДЕНИЯ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CALL LIGHTNING</column>
+            <where>name = 'ПРИЗЫВ МОЛНИИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SUMMON LESSER DEMONS</column>
+            <where>name = 'ПРИЗЫВ НИЗШИХ ДЕМОНОВ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">VAMPIRIC TOUCH</column>
+            <where>name = 'ПРИКОСНОВЕНИЕ ВАМПИРА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">TIDAL WAVE</column>
+            <where>name = 'ПРИЛИВНАЯ ВОЛНА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">PHANTOM STEED</column>
+            <where>name = 'ПРИРАЧНЫЙ СКАКУН'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">FEIGN DEATH</column>
+            <where>name = 'ПРИТВОРНАЯ СМЕРТЬ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">BESTOW CURSE</column>
+            <where>name = 'ПРОКЛЯТИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SKEWERING BRANCH</column>
+            <where>name = 'ПРОНЗАЮЩИЙ КОРЕНЬ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SPEAK WITH DEAD</column>
+            <where>name = 'РАЗГОВОР С МЁРТВЫМИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SPEAK WITH PLANTS</column>
+            <where>name = 'РАЗГОВОР С РАСТЕНИЯМИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">DISPEL MAGIC</column>
+            <where>name = 'РАССЕИВАНИЕ МАГИИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">PLANT GROWTH</column>
+            <where>name = 'РОСТ РАСТЕНИЙ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MELD INTO STONE</column>
+            <where>name = 'СЛИЯНИЕ С КАМНЕМ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">REMOVE CURSE</column>
+            <where>name = 'СНЯТИЕ ПРОКЛЯТЬЯ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CREATE FOOD AND WATER</column>
+            <where>name = 'СОТВОРЕНИЕ ПИЩИ И ВОДЫ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">WIND WALL</column>
+            <where>name = 'СТЕНА ВЕТРОВ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">WALL OF WATER</column>
+            <where>name = 'СТЕНА ВОДЫ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ELEMENTAL WEAPON</column>
+            <where>name = 'СТИХИЙНОЕ ОРУЖИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">FEAR</column>
+            <where>name = 'УЖАС'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">HASTE</column>
+            <where>name = 'УСКОРЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">WATER WALK</column>
+            <where>name = 'ХОЖДЕНИЕ ПО ВОДЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">TONGUES</column>
+            <where>name = 'ЯЗЫКИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">AURA OF LIFE</column>
+            <where>name = 'АУРА ЖИЗНИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">AURA OF PURITY</column>
+            <where>name = 'АУРА ОЧИЩЕНИЯ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SICKENING RADIANCE</column>
+            <where>name = 'БОЛЕЗНЕННОЕ СИЯНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MORDENKAINEN'S FAITHFUL HOUND</column>
+            <where>name = 'ВЕРНЫЙ ПЁС МОРДЕНКАЙНЕНА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CONTROL WATER</column>
+            <where>name = 'ВЛАСТЬ НАД ВОДАМИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">PHANTASMAL KILLER</column>
+            <where>name = 'ВООБРАЖАЕМЫЙ УБИЙЦА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">GREATER INVISIBILITY</column>
+            <where>name = 'ВЫСШАЯ НЕВИДИМОСТЬ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">GIANT INSECT</column>
+            <where>name = 'ГИГАНТСКОЕ НАСЕКОМОЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ICE STORM</column>
+            <where>name = 'ГРАД'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">TREE STRIKE</column>
+            <where>name = 'ДРЕВЕСНЫЙ ЗАХВАТ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">VITRIOLIC SPHERE</column>
+            <where>name = 'ЕДКАЯ СФЕРА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">DEATH WARD</column>
+            <where>name = 'ЗАЩИТА ОТ СМЕРТИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">BANISHMENT</column>
+            <where>name = 'ИЗГНАНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">FABRICATE</column>
+            <where>name = 'ИЗГОТОВЛЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">STONE SHAPE</column>
+            <where>name = 'ИЗМЕНЕНИЕ ФОРМЫ КАМНЯ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MORDENKAINEN'S PRIVATE SANCTUM</column>
+            <where>name = 'КАБИНЕТ МОРДЕНКАЙНЕНА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">STONESKIN</column>
+            <where>name = 'КАМЕННАЯ КОЖА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">LEOMUND'S SECRET CHEST</column>
+            <where>name = 'ЛЕОМУНДОВ ПОТАЙНОЙ СУНДУК'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ARCANE EYE</column>
+            <where>name = 'МАГИЧЕСКИЙ ГЛАЗ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">HALLUCINATORY TERRAIN</column>
+            <where>name = 'МИРАЖ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CLOUD OF SPORES</column>
+            <where>name = 'ОБЛАКО СПОР'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SHADOW OF M0IL</column>
+            <where>name = 'ОБЛАЧЕНИЕ ТЕНИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">STAGGERING SMITE</column>
+            <where>name = 'ОГЛУШАЮЩАЯ КАРА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">WALL OF FIRE</column>
+            <where>name = 'ОГНЕННАЯ СТЕНА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">FIRE SHIELD</column>
+            <where>name = 'ОГНЕННЫЙ ЩИТ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">OTILUKE'S RESILIENT SPHERE</column>
+            <where>name = 'ОТИЛЮКОВ УПРУГИЙ ШАР'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CHARM MONSTER</column>
+            <where>name = 'ОЧАРОВАНИЕ МОНСТРА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">DIMENSION DOOR</column>
+            <where>name = 'ПЕРЕНОСЯЩАЯ ДВЕРЬ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">DOMINATE BEAST</column>
+            <where>name = 'ПОДЧИНЕНИЕ ЗВЕРЯ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">FIND GREATER STEED</column>
+            <where>name = 'ПОИСК ВЫСШЕГО СКАКУНА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">LOCATE CREATURE</column>
+            <where>name = 'ПОИСК СУЩЕСТВА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">POLYMORPH</column>
+            <where>name = 'ПРЕВРАЩЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">DIVINATION</column>
+            <where>name = 'ПРЕДСКАЗАНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SUMMON GREATER DEMON</column>
+            <where>name = 'ПРИЗЫВ ВЫСШЕГО ДЕМОНА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CONJURE WOODLAND BEINGS</column>
+            <where>name = 'ПРИЗЫВ ЛЕСНЫХ ОБИТАТЕЛЕЙ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CONJURE MINOR PLANT CREATURES</column>
+            <where>name = 'ПРИЗЫВ МАЛЫХ ДРЕВНЕЙ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CONJURE MINOR ELEMENTALS</column>
+            <where>name = 'ПРИЗЫВ МАЛЫХ ЭЛЕМЕНТАЛЕЙ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">COMPULSION</column>
+            <where>name = 'ПРИНУЖДЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">FREEDOM OF MOVEMENT</column>
+            <where>name = 'СВОБОДА ПЕРЕМЕЩЕНИЯ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CONFUSION</column>
+            <where>name = 'СМЯТЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ELEMENTAL BANE</column>
+            <where>name = 'СТИХИЙНАЯ КАРА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">GUARDIAN OF FAITH</column>
+            <where>name = 'СТРАЖ ВЕРЫ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">GUARDIAN OF NATURE</column>
+            <where>name = 'СТРАЖ ПРИРОДЫ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">WATERY SPHERE</column>
+            <where>name = 'СФЕРА ВОДЫ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">STORM SPHERE</column>
+            <where>name = 'СФЕРА ШТОРМА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">BLIGHT</column>
+            <where>name = 'УСЫХАНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">GRASPING VINE</column>
+            <where>name = 'ЦЕПКАЯ ЛОЗА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">EVARD'S BLACK TENTACLES</column>
+            <where>name = 'ЧЕРНЫЕ ЩУПАЛЬЦА ЭВАРДА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SWIFT QUIVER</column>
+            <where>name = 'БЫСТРЫЙ КОЛЧАН'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">DREAM</column>
+            <where>name = 'ВЕЩИЙ СОН'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MAELSTROM</column>
+            <where>name = 'ВОДОВОРОТ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">GREATER RESTORATION</column>
+            <where>name = 'ВЫСШЕЕ ВОССТАНОВЛЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">WRATH OF NATURE</column>
+            <where>name = 'ГНЕВ ПРИРОДЫ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">FAR STEP</column>
+            <where>name = 'ДАЛЕКИЙ ШАГ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">BIGBY'S HAND</column>
+            <where>name = 'ДЛАНЬ БИГБИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">TREE STRIDE</column>
+            <where>name = 'ДРЕВЕСНЫЙ ПУТЬ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CONTAGION</column>
+            <where>name = 'ЗАРАЖЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">LEGEND LORE</column>
+            <where>name = 'ЗНАНИЕ ЛЕГЕНД'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">BANISHING SMITE</column>
+            <where>name = 'ИЗГОНЯЮЩАЯ КАРА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MODIFY MEMORY</column>
+            <where>name = 'ИЗМЕНЕНИЕ ПАМЯТИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">INFERNAL CALLING</column>
+            <where>name = 'ИНФЕРНАЛЬНЫЙ ЗОВ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">WALL OF STONE</column>
+            <where>name = 'КАМЕННАЯ СТЕНА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CONE OF COLD</column>
+            <where>name = 'КОНУС ХОЛОДА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CIRCLE OF POWER</column>
+            <where>name = 'КРУГ СИЛЫ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">TELEPORTATION CIRCLE</column>
+            <where>name = 'КРУГ ТЕЛЕПОРТАЦИИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">RARY'S TELEPATHIC BOND</column>
+            <where>name = 'МЕНТАЛЬНАЯ СВЯЗЬ РЭРИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MASS CURE WOUNDS</column>
+            <where>name = 'МНОЖЕСТВЕННОЕ ЛЕЧЕНИЕ РАН'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MIND SPORE</column>
+            <where>name = 'МОЗГОВАЯ СПОРА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SCRYING</column>
+            <where>name = 'НАБЛЮДЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">INSECT PLAGUE</column>
+            <where>name = 'НАШЕСТВИЕ НАСЕКОМЫХ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">FLAME STRIKE</column>
+            <where>name = 'НЕБЕСНЫЙ ОГОНЬ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ENERVATION</column>
+            <where>name = 'ОБЕССИЛИВАНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">GEAS</column>
+            <where>name = 'ОБЕТ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CLOUDKILL</column>
+            <where>name = 'ОБЛАКО СМЕРТИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">COMMUNE</column>
+            <where>name = 'ОБЩЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">COMMUNE WITH NATURE</column>
+            <where>name = 'ОБЩЕНИЕ С ПРИРОДОЙ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">RAISE DEAD</column>
+            <where>name = 'ОЖИВЛЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ANIMATE OBJECTS</column>
+            <where>name = 'ОЖИВЛЕНИЕ ВЕЩЕЙ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">PLANAR BINDING</column>
+            <where>name = 'ПЛАНАРНЫЕ УЗЫ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">DANSE MACABRE</column>
+            <where>name = 'ПЛЯСКА СМЕРТИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">IMMOLATION</column>
+            <where>name = 'ПОДЖИГАНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">DOMINATE PERSON</column>
+            <where>name = 'ПОДЧИНЕНИЕ ЛИЧНОСТИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">NEGATIVE ENERGY FLOOD</column>
+            <where>name = 'ПОТОК НЕГАТИВНОЙ ЭНЕРГИИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ANTILIFE SHELL</column>
+            <where>name = 'ПРЕГРАДА ЖИЗНИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">TRANSMUTE ROCK</column>
+            <where>name = 'ПРЕОБРАЗОВАТЬ СКАЛУ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CONJURE PLANT CREATURE</column>
+            <where>name = 'ПРИЗЫВ ДРЕВНЯ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CONJURE VOLLEY</column>
+            <where>name = 'ПРИЗЫВ ЗАЛПА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CONJURE ELEMENTAL</column>
+            <where>name = 'ПРИЗЫВ ЭЛЕМЕНТАЛЯ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SEEMING</column>
+            <where>name = 'ПРИТВОРСТВО'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">AWAKEN</column>
+            <where>name = 'ПРОБУЖДЕНИЕ РАЗУМА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">DESTRUCTIVE WAVE</column>
+            <where>name = 'РАЗРУШИТЕЛЬНАЯ ВОЛНА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">DAWN</column>
+            <where>name = 'РАССВЕТ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">DISPEL EVIL AND GOOD</column>
+            <where>name = 'РАССЕИВАНИЕ ДОБРА И ЗЛА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">REINCARNATE</column>
+            <where>name = 'РЕИНКАРНАЦИЯ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CONTACT OTHER PLANE</column>
+            <where>name = 'СВЯЗЬ С ИНЫМ МИРОМ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">HALLOW</column>
+            <where>name = 'СВЯТИЛИЩЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">HOLY WEAPON</column>
+            <where>name = 'СВЯЩЕННОЕ ОРУЖИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">WALL OF FORCE</column>
+            <where>name = 'СИЛОВАЯ СТЕНА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SYNAPTIC STATIC</column>
+            <where>name = 'СИНОПТИЧЕСКИЙ РАЗРЯД'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">PASSWALL</column>
+            <where>name = 'СОЗДАНИЕ ПРОХОДА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CREATION</column>
+            <where>name = 'СОТВОРЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">WALL OF LIGHT</column>
+            <where>name = 'СТЕНА СВЕТА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">TELEKINESIS</column>
+            <where>name = 'ТЕЛЕКИНЕЗ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">STEEL WIND STRIKE</column>
+            <where>name = 'УДАР СТАЛЬНОГО ВЕТРА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">HOLD MONSTER</column>
+            <where>name = 'УДЕРЖАНИЕ ЧУДОВИЩА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CONTROL WINDS</column>
+            <where>name = 'УПРАВЛЕНИЕ ВЕТРОМ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SKILL EMPOWERMENT</column>
+            <where>name = 'УСИЛЕНИЕ НАВЫКА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MISLEAD</column>
+            <where>name = 'ФАЛЬШИВЫЙ ДВОЙНИК'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MAGIC JAR</column>
+            <where>name = 'ВОЛШЕБНЫЙ СОСУД'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MOVE EARTH</column>
+            <where>name = 'ДВИЖЕНИЕ ПОЧВЫ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">PROGRAMMED ILLUSION</column>
+            <where>name = 'ЗАДАННАЯ ИЛЛЮЗИЯ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">FORBIDDANCE</column>
+            <where>name = 'ЗАПРЕТ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">PRIMORDIAL WARD</column>
+            <where>name = 'ИЗНАЧАЛЬНАЯ ЗАЩИТА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">TRUE SEEING</column>
+            <where>name = 'ИСТИННОЕ ЗРЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SOUL CAGE</column>
+            <where>name = 'КЛЕТКА ДУШ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">BONES OF THE EARTH</column>
+            <where>name = 'КОСТИ ЗЕМЛИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CIRCLE OF DEATH</column>
+            <where>name = 'КРУГ СМЕРТИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">WALL OF ICE</column>
+            <where>name = 'ЛЕДЯНАЯ СТЕНА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ARCANE GATE</column>
+            <where>name = 'МАГИЧЕСКИЕ ВРАТА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">DRAWMIJ'S INSTANT SUMMON</column>
+            <where>name = 'МГНОВЕННЫЙ ПРИЗЫВ ДРОМИДЖА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MENTAL PRISON</column>
+            <where>name = 'МЕНТАЛЬНАЯ ТЮРЬМА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MASS SUGGESTION</column>
+            <where>name = 'МНОЖЕСТВЕННОЕ ВНУШЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">OTTO'S IRRESISTIBLE DANCE</column>
+            <where>name = 'НЕУДЕРЖИМАЯ ПЛЯСКА ОТТО'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">FLESH TO STONE</column>
+            <where>name = 'ОКАМЕНЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">OTILUKE'S FREEZING SPHERE</column>
+            <where>name = 'ОТИЛЮКОВ ЛЕДЯНОЙ ШАР'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">HEROES' FEAST</column>
+            <where>name = 'ПИР ГЕРОЕВ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">PLANAR ALLY</column>
+            <where>name = 'ПЛАНАРНЫЙ СОЮЗНИК'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CHAIN LIGHTNING</column>
+            <where>name = 'ПЛЯШУЩАЯ МОЛНИЯ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">FIND THE PATH</column>
+            <where>name = 'ПОИСК ПУТИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">INVESTITURE OF WIND</column>
+            <where>name = 'ПОКРОВ ВЕТРА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">INVESTITURE OF STONE</column>
+            <where>name = 'ПОКРОВ КАМНЯ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">INVESTITURE OF ICE</column>
+            <where>name = 'ПОКРОВ ЛЬДА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">INVESTITURE OF FLAME</column>
+            <where>name = 'ПОКРОВ ПЛАМЕНИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">HEAL</column>
+            <where>name = 'ПОЛНОЕ ИСЦЕЛЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">HARM</column>
+            <where>name = 'ПОРАЖЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CONTINGENCY</column>
+            <where>name = 'ПРЕДОСТОРОЖНОСТЬ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CONJURE FEY</column>
+            <where>name = 'ПРИЗЫВ ФЕИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">TRANSPORT VIA PLANTS</column>
+            <where>name = 'ПУТЕШЕСТВИЕ ЧЕРЕЗ РАСТЕНИЯ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">DRYAD’S LEAP</column>
+            <where>name = 'ПУТИ ДРИАДЫ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">EYEBITE</column>
+            <where>name = 'РАЗЯЩЕЕ ОКО'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SCATTER</column>
+            <where>name = 'РАСКИДЫВАНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">DISINTEGRATE</column>
+            <where>name = 'РАСПАД'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">DRUID GROVE</column>
+            <where>name = 'РОЩА ДРУИДА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">WORD OF RECALL</column>
+            <where>name = 'СЛОВО ВОЗВРАТА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SUNBEAM</column>
+            <where>name = 'СОЛНЕЧНЫЙ ЛУЧ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CREATE HOMUNCULUS</column>
+            <where>name = 'СОТВОРЕНИЕ ГОМУНКУЛА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CREATE UNDEAD</column>
+            <where>name = 'СОТВОРЕНИЕ НЕЖИТИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">BLADE BARRIER</column>
+            <where>name = 'СТЕНА КЛИНКОВ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">GUARDS AND WARDS</column>
+            <where>name = 'СТРАЖИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">GLOBE OF INVULNERABILITY</column>
+            <where>name = 'СФЕРА НЕУЯЗВИМОСТИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">WALL OF THORNS</column>
+            <where>name = 'ТЕРНОВАЯ СТЕНА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">TENSER’S TRANSFORMATION</column>
+            <where>name = 'ТРАНСФОРМАЦИЯ ТЕНЗЕРА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">WIND WALK</column>
+            <where>name = 'ХОЖДЕНИЕ ПО ВЕТРУ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">DIVINE WORD</column>
+            <where>name = 'БОЖЕСТВЕННОЕ СЛОВО'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">POWER WORD PAIN</column>
+            <where>name = 'БОЛЬ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MORDENKAINEN'S MAGNIFICENT MANSION</column>
+            <where>name = 'ВЕЛИКОЛЕПНЫЙ ОСОБНЯК МОРДЕНКАЙНЕНА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">RESURRECTION</column>
+            <where>name = 'ВОСКРЕШЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">DELAYED BLAST FIREBALL</column>
+            <where>name = 'ЗАМЕДЛЕННЫЙ ОГНЕННЫЙ ШАР'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SYMBOL</column>
+            <where>name = 'ЗНАК'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">REVERSE GRAVITY</column>
+            <where>name = 'ИЗМЕНЕНИЕ ТЯГОТЕНИЯ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SEQUESTER</column>
+            <where>name = 'ИЗОЛЯЦИЯ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CROWN OF STARS</column>
+            <where>name = 'КОРОНА ЗВЁЗД'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MORDENKAINEN'S SWORD</column>
+            <where>name = 'МЕЧ МОРДЕНКАЙНЕНА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">FIRE STORM</column>
+            <where>name = 'ОГНЕННАЯ БУРЯ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">FINGER OF DEATH</column>
+            <where>name = 'ПЕРСТ СМЕРТИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SIMULACRUM</column>
+            <where>name = 'ПОДОБИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CONJURE CELESTIAL</column>
+            <where>name = 'ПРИЗЫВ НЕБОЖИТЕЛЯ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">PROJECT IMAGE</column>
+            <where>name = 'ПРОЕКЦИЯ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">PRISMATIC SPRAY</column>
+            <where>name = 'РАДУЖНЫЕ БРЫЗГИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">REGENERATE</column>
+            <where>name = 'РЕГЕНЕРАЦИЯ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">WHIRLWIND</column>
+            <where>name = 'СМЕРЧ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MIRAGE ARCANE</column>
+            <where>name = 'ТАИНСТВЕННЫЙ МИРАЖ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">TELEPORT</column>
+            <where>name = 'ТЕЛЕПОРТАЦИЯ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">FORCECAGE</column>
+            <where>name = 'УЗИЛИЩЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">PLANE SHIFT</column>
+            <where>name = 'УХОД В ИНОЙ МИР'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">TEMPLE OF THE GODS</column>
+            <where>name = 'ХРАМ БОГОВ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ETHEREALNESS</column>
+            <where>name = 'ЭФИРНОСТЬ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ANTIPATHY/SYMPATHY</column>
+            <where>name = 'АНТИПАТИЯ/СИМПАТИЯ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">HOLY AURA</column>
+            <where>name = 'АУРА СВЯТОСТИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CONTROL WEATHER</column>
+            <where>name = 'ВЛАСТЬ НАД ПОГОДОЙ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">INCENDIARY CLOUD</column>
+            <where>name = 'ВОСПЛАМЕНЯЮЩАЯСЯ ТУЧА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">CLONE</column>
+            <where>name = 'ДВОЙНИК'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">DEMIPLANE</column>
+            <where>name = 'ДЕМИПЛАН'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ABI-DALZIM’S HORRID WILTING</column>
+            <where>name = 'ЖУТКОЕ УВЯДАНИЕ АБИ-ДАЛЬЦИМА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">EARTHQUAKE</column>
+            <where>name = 'ЗЕМЛЕТРЯСЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ILLUSORY DRAGON</column>
+            <where>name = 'ИЛЛЮЗОРНЫЙ ДРАКОН'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MAZE</column>
+            <where>name = 'ЛАБИРИНТ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MIGHTY FORTRESS</column>
+            <where>name = 'МОГУЧАЯ КРЕПОСТЬ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">GLIBNESS</column>
+            <where>name = 'НАХОДЧИВОСТЬ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MADDENING DARKNESS</column>
+            <where>name = 'ОДУРЯЮЩАЯ ТЬМА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">DOMINATE MONSTER</column>
+            <where>name = 'ПОДЧИНЕНИЕ ЧУДОВИЩА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ANIMAL SHAPES</column>
+            <where>name = 'ПРЕВРАЩЕНИЕ В ЖИВОТНЫХ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ANTIMAGIC FIELD</column>
+            <where>name = 'ПРЕГРАДА МАГИИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">FEEBLEMIND</column>
+            <where>name = 'СЛАБОУМИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">POWER WORD STUN</column>
+            <where>name = 'СЛОВО СИЛЫ: ОГЛУШЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MIND BLANK</column>
+            <where>name = 'СОКРЫТИЕ РАЗУМА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SUNBURST</column>
+            <where>name = 'СОЛНЕЧНЫЙ ОЖОГ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">TELEPATHY</column>
+            <where>name = 'ТЕЛЕПАТИЯ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">TSUNAMI</column>
+            <where>name = 'ЦУНАМИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">GATE</column>
+            <where>name = 'ВРАТА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">STORM OF VENGEANCE</column>
+            <where>name = 'ГРОЗА ГНЕВА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">IMPRISONMENT</column>
+            <where>name = 'ЗАТОЧЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">WISH</column>
+            <where>name = 'ИСПОЛНЕНИЕ ЖЕЛАНИЙ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">TRUE RESURRECTION</column>
+            <where>name = 'ИСТИННОЕ ВОСКРЕШЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">TRUE POLYMORPH</column>
+            <where>name = 'ИСТИННОЕ ПРЕВРАЩЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">METEOR SWARM</column>
+            <where>name = 'МЕТЕОРИТНЫЙ ДОЖДЬ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MASS HEAL</column>
+            <where>name = 'МНОЖЕСТВЕННОЕ ПОЛНОЕ ИСЦЕЛЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">MASS POLYMORPH</column>
+            <where>name = 'МНОЖЕСТВЕННОЕ ПРЕВРАЩЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">INVULNERABILITY</column>
+            <where>name = 'НЕУЯЗВИМОСТЬ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">TIME STOP</column>
+            <where>name = 'ОСТАНОВКА ВРЕМЕНИ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">SHAPECHANGE</column>
+            <where>name = 'ПОЛНОЕ ПРЕВРАЩЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">FORESIGHT</column>
+            <where>name = 'ПРЕДВИДЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">ASTRAL PROJECTION</column>
+            <where>name = 'ПРОЕКЦИЯ В АСТРАЛ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">PSYCHIC SCREAM</column>
+            <where>name = 'ПСИХИЧЕСКИЙ КРИК'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">PRISMATIC WALL</column>
+            <where>name = 'РАДУЖНАЯ СТЕНА'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">POWER WORD HEAL</column>
+            <where>name = 'СЛОВО СИЛЫ: ИСЦЕЛЕНИЕ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">POWER WORD KILL</column>
+            <where>name = 'СЛОВО СИЛЫ: СМЕРТЬ'</where>
+        </update>
+        <update tableName="tb_spells">
+            <column name="name_en">WEIRD</column>
+            <where>name = 'СМЕРТНЫЙ УЖАС'</where>
+        </update>
+
+
+    </changeSet>
+
+    <changeSet id="6" author="drudenko">
+        <sql>
+            UPDATE tb_traits SET text = REPLACE ( text, 'https://tentaculus.ru/spells/q=', 'https://dnd5-webapi.herokuapp.com/spells/' );
+            UPDATE tb_traits SET text = REPLACE ( text, 'https://tentaculus.ru/spells/#q=', 'https://dnd5-webapi.herokuapp.com/spells/' );
+            UPDATE tb_actions SET text = REPLACE ( text, 'https://tentaculus.ru/spells/q=', 'https://dnd5-webapi.herokuapp.com/spells/' );
+            UPDATE tb_actions SET text = REPLACE ( text, 'https://tentaculus.ru/spells/#q=', 'https://dnd5-webapi.herokuapp.com/spells/' );
+        </sql>
+    </changeSet>
+
+    <changeSet id="7" author="drudenko">
+        <sql>
+            UPDATE tb_spells SET name_en = REPLACE ( name_en, ' ', '_' );
+        </sql>
+    </changeSet>
+
+    <changeSet id="8" author="drudenko">
+        <sql>
+            UPDATE tb_traits SET text = REPLACE ( text, '&amp;type=text', '' );
+            UPDATE tb_actions SET text = REPLACE ( text, '&amp;type=text', '' );
+        </sql>
+    </changeSet>
+</databaseChangeLog>

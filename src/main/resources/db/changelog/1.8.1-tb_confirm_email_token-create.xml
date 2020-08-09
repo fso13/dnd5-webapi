@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="1" author="drudenko">
+        <addColumn tableName="tb_users">
+            <column name="confirm_email" type="boolean" defaultValueBoolean="false"/>
+            <column name="time_create" type="TIMESTAMP" defaultValueDate="CURRENT_TIMESTAMP"/>
+            <column name="time_update" type="TIMESTAMP" defaultValueDate="CURRENT_TIMESTAMP"/>
+        </addColumn>
+        <sql>
+            update tb_users set confirm_email=true;
+        </sql>
+
+        <addColumn tableName="tb_profiles">
+            <column name="time_create" type="TIMESTAMP" defaultValueDate="CURRENT_TIMESTAMP"/>
+            <column name="time_update" type="TIMESTAMP" defaultValueDate="CURRENT_TIMESTAMP"/>
+        </addColumn>
+
+        <addColumn tableName="tb_password_reset_token">
+            <column name="time_create" type="TIMESTAMP" defaultValueDate="CURRENT_TIMESTAMP"/>
+            <column name="time_update" type="TIMESTAMP" defaultValueDate="CURRENT_TIMESTAMP"/>
+        </addColumn>
+
+    </changeSet>
+
+    <changeSet id="2" author="drudenko">
+        <createTable tableName="tb_confirm_email_token">
+            <column name="id" type="VARCHAR(255)" remarks="Идентификатор">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="user_id" type="VARCHAR(1000)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="expiry_date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="time_create" type="TIMESTAMP"/>
+            <column name="time_update" type="TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

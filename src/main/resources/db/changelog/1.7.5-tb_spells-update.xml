@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="1" author="drudenko">
+        <insert tableName="tb_spells">
+            <column name="name">ГЛУХОТА СЛЕПОТА</column>
+            <column name="school">некромантия</column>
+            <column name="level">2</column>
+            <column name="casting_time">1 действие</column>
+            <column name="range">30 футов</column>
+            <column name="components">В</column>
+            <column name="duration">1 минута</column>
+            <column name="text"> <![CDATA[
+Вы можете оглушить или ослепить врага. Выберите существо, которое можете видеть в пределах дальности заклинания. Оно должно сделать спасбросок по Телосложению. При провале цель слепнет или глохнет (на ваш выбор) на время действия заклинания. В конце каждого своего хода, цель может сделать повторный спасбросок по Телосложению. В случае успеха заклинание заканчивается.На более высоких кругах. Если вы произносите заклинание, используя ячейку 3 круга или выше, то можете выбрать одно дополнительное существо за каждый круг выше второго.]]></column>
+            <column name="name_en">BLINDNESS DEAFNESS</column>
+        </insert>
+
+        <insert tableName="tb_spell_class_spells">
+            <column name="spells_name">ГЛУХОТА СЛЕПОТА</column>
+            <column name="spell_class_name">Бард</column>
+        </insert>
+        <insert tableName="tb_spell_class_spells">
+            <column name="spells_name">ГЛУХОТА СЛЕПОТА</column>
+            <column name="spell_class_name">Жрец</column>
+        </insert>
+        <insert tableName="tb_spell_class_spells">
+            <column name="spells_name">ГЛУХОТА СЛЕПОТА</column>
+            <column name="spell_class_name">Чародей</column>
+        </insert>
+        <insert tableName="tb_spell_class_spells">
+            <column name="spells_name">ГЛУХОТА СЛЕПОТА</column>
+            <column name="spell_class_name">Волшебник</column>
+        </insert>
+        <sql>
+            delete from tb_spell_class_spells where spells_name = 'ГЛУХОТА/СЛЕПОТА';
+            delete from tb_spells where name = 'ГЛУХОТА/СЛЕПОТА';
+        </sql>
+    </changeSet>
+
+    <changeSet id="2" author="drudenko">
+        <sql>
+            UPDATE tb_spells SET school = 'Некромантия' where school = 'некромантия';
+        </sql>
+    </changeSet>
+</databaseChangeLog>

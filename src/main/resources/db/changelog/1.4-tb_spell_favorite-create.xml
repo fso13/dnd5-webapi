@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="1" author="drudenko">
+        <createTable tableName="tb_spell_favorite">
+            <column name="spell_id" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="favorite" type="boolean"/>
+        </createTable>
+        <addPrimaryKey tableName="tb_spell_favorite" columnNames="spell_id,user_id"/>
+    </changeSet>
+
+    <changeSet id="2" author="drudenko">
+        <createTable tableName="tb_monster_favorite">
+            <column name="monster_id" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="favorite" type="boolean"/>
+        </createTable>
+        <addPrimaryKey tableName="tb_monster_favorite" columnNames="monster_id,user_id"/>
+    </changeSet>
+
+</databaseChangeLog>

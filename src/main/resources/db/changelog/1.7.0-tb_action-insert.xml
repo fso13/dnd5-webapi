@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="1" author="drudenko">
+        <insert tableName="tb_actions">
+            <column name="id" valueSequenceNext="seq_entity"/>
+            <column name="name">Мультиатака</column>
+            <column name="monster_name">Колючий Дьявол (Spined Devil)</column>
+            <column name="text"><![CDATA[[Дьявол совершает две атаки: одну укусом, и одну вилами, или же две атаки иглами на хвосте.]]]></column>
+            <column name="attack"><![CDATA[[]]]></column>
+        </insert>
+        <insert tableName="tb_actions">
+            <column name="id" valueSequenceNext="seq_entity"/>
+            <column name="name">Укус</column>
+            <column name="monster_name">Колючий Дьявол (Spined Devil)</column>
+            <column name="text"><![CDATA[[Рукопашная атака оружием: +2 к попаданию, досягаемость 5 фт., одна цель.]]]></column>
+            <column name="attack"><![CDATA[[Попадание: Рубящий урон 5 (2d4)]]]></column>
+        </insert>
+        <insert tableName="tb_actions">
+            <column name="id" valueSequenceNext="seq_entity"/>
+            <column name="name">Вилы</column>
+            <column name="monster_name">Колючий Дьявол (Spined Devil)</column>
+            <column name="text"><![CDATA[[Рукопашная атака оружием: +2 к попаданию, досягаемость 5 фт., одна цель.]]]></column>
+            <column name="attack"><![CDATA[[Попадание: Колющий урон 3 (1d6)]]]></column>
+        </insert>
+        <insert tableName="tb_actions">
+            <column name="id" valueSequenceNext="seq_entity"/>
+            <column name="name">Игла на хвосте</column>
+            <column name="monster_name">Колючий Дьявол (Spined Devil)</column>
+            <column name="text"><![CDATA[[Дальнобойная атака оружием: +4 к попаданию, дистанция 20/80 фт., одна цель.]]]></column>
+            <column name="attack"><![CDATA[[Попадание: Колющий урон 4 (1d4 + 2) плюс урон огнём 3 (1d6).]]]></column>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

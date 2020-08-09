@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script data-ad-client="ca-pub-2005414424825102" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-13ZXZEL9Y2"></script>
+
+    <script crossorigin="anonymous" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script crossorigin="anonymous" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script crossorigin="anonymous" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.12/dist/css/bootstrap-select.min.css">
+
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.12/dist/js/bootstrap-select.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+
+    <meta charset="utf-8">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <title>Бестиарий</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+
+    <style>
+        .container {
+            box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .pagination {
+            display: inline-block;
+        }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 5px 5px;
+            text-decoration: none;
+        }
+
+        .bloggood-ru-ssilka span {
+            border-radius: 5px 5px 5px 5px;
+            visibility: hidden;
+            position: absolute;
+            right: 10%;
+            background: #fff;
+            box-shadow: -2px 2px 10px -1px #333;
+        }
+
+        @media screen and (min-width: 1152px) {
+            .bloggood-ru-ssilka span {
+                right: 60%;
+            }
+        }
+
+        .bloggood-ru-ssilka:hover span {
+            visibility: visible;
+        }
+    </style>
+
+    <script>
+        async function sendFavorite(monsterName, cb) {
+            const url = '/monsters/';
+            const data = {isFavorite: cb.checked};
+
+            try {
+                const response = await fetch(url + monsterName, {
+                    method: 'PATCH', // или 'PUT'
+                    body: JSON.stringify(data), // данные могут быть 'строкой' или {объектом}!
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                const json = await response.json();
+                console.log('Успех:', JSON.stringify(json));
+            } catch (error) {
+                console.error('Ошибка:', error);
+            }
+        }
+    </script>
+</head>
+<body>
+
+
+<header th:insert="fragments/header.html :: header"></header>
+<main class="container small" role="main" style="margin-top:80px" th:switch="${monsters}">
+    <!-- Fixed navbar -->
+    <div class="container">
+
+        <div class="table-responsive-sm" th:case="*">
+            <h2 class="my-5">Бестиарий</h2>
+
+            <div class="btn-group">
+                <select id="selectCr" class="selectpicker" multiple data-selected-text-format="count > 3" title="Опасность...">
+                    <option th:each="cr1 : ${crs}" th:selected="${cr1.selected}" th:value="${cr1.name}" th:text="${cr1.name}"></option>
+                </select>
+            </div>
+
+            <div class="btn-group">
+                <select id="selectType" class="selectpicker" multiple data-selected-text-format="count > 3" title="Тип...">
+                    <option th:each="type1 : ${types}" th:selected="${type1.selected}" th:value="${type1.name}" th:text="${type1.name}"></option>
+                </select>
+            </div>
+
+            <div class="btn-group">
+                <select id="selectBiom" class="selectpicker" multiple data-selected-text-format="count > 3" title="Обитание...">
+                    <option th:each="biom1 : ${bioms}" th:selected="${biom1.selected}" th:value="${biom1.name}" th:text="${biom1.name}"></option>
+                </select>
+            </div>
+
+            <div class="btn-group">
+                <form action="#" class="form-inline mt-2 mt-md-0" method="get" th:action="@{/monsters}" th:object="${name}">
+                    <label>
+                        <input class="form-control mr-sm-2" id="name" name="name" th:value="${name}" placeholder="Поиск..." type="text">
+                    </label>
+                    <button class="btn  my-2 my-sm-0" type="submit">Поиск</button>
+                </form>
+            </div>
+
+            <table class="table table-striped table-hover table-sm" id="table">
+                <thead class="thead-dark">
+                <tr class="container">
+                    <th sec:authorize="!isAnonymous()" scope="col"><a th:href="@{/monsters(favorite=${!favorite}, name=${name},cr=${cr}, biom=${biom},type=${type},order=${order})}">&#10084;</a>
+                    </th>
+                    <th scope="col"><a th:href="@{/monsters(favorite=${favorite}, name=${name},cr=${cr}, biom=${biom},type=${type}, order='name')}">Название</a></th>
+                    <th scope="col"><a th:href="@{/monsters(favorite=${favorite}, name=${name},cr=${cr}, biom=${biom},type=${type}, order='crNumber')}">Класс опастности</a></th>
+                    <th scope="col"><a th:href="@{/monsters(favorite=${favorite}, name=${name},cr=${cr}, biom=${biom},type=${type}, order='type')}">Тип</a></th>
+                    <th scope="col">Среда обитания</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="monster : ${monsters}">
+                    <td sec:authorize="!isAnonymous()">
+                        <input checked data-size="xs" onclick="sendFavorite(this.getAttribute('monsterName'), this);" th:checked="${monster.isFavorite}"
+                               th:monsterName="${monster.name}" type="checkbox">
+                    </td>
+                    <td>
+                        <a class="bloggood-ru-ssilka text-dark" th:href="@{/monsters/{id}(id=${monster.name})}">
+                            <div th:text="${monster.name}"></div>
+                            <span><img width="200" th:src="${monster.imgStaticUrl}"></span>
+                        </a>
+                    </td>
+                    <td><a class="text-dark" th:text="${monster.cr}"></a></td>
+                    <td><a class="text-dark" th:text="${monster.type}"></a></td>
+                    <td>
+                        <a class="text-dark" th:each="biom : ${monster.bioms}" th:text="${biom} + ' '"></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="pagination" th:each="pageNumber : ${pageNumbers}"
+             th:if="${monsters.totalPages > 0}">
+            <a th:class="${pageNumber==monsters.number + 1} ? active"
+               th:href="@{/monsters(size=${monsters.size}, page=${pageNumber},name=${name}, cr=${cr},  biom=${biom},type=${type},order=${order})}"
+               th:text="${pageNumber}"></a>
+        </div>
+    </div>
+</main>
+<footer th:insert="fragments/footer.html :: footer"></footer>
+
+<script th:inline="javascript">
+    $('#selectProfiles').on('hidden.bs.select', async function () {
+        const url = '/profiles/';
+
+        try {
+            const response = await fetch(url + $(this).val(), {
+                method: 'PATCH', // или 'PUT'
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const staus = await response.status();
+
+        } catch (error) {
+            console.error('Ошибка:', error);
+        }
+
+        document.location = '/monsters?type=' + [[${type}]] + '&cr=' + [[${cr}]] + '&biom=' + [[${biom}]] + '&order=' + [[${order}]] + '&favorite=' + [[${favorite}]];
+
+    });
+</script>
+<script th:inline="javascript">
+    $('#selectType').on('hidden.bs.select', function () {
+        document.location = '/monsters?type=' + $(this).val().join(',') + '&cr=' + [[${cr}]] + '&biom=' + [[${biom}]] + '&order=' + [[${order}]] + '&favorite=' + [[${favorite}]];
+    });
+</script>
+<script th:inline="javascript">
+    $('#selectCr').on('hidden.bs.select', function () {
+        document.location = '/monsters?cr=' + $(this).val().join(',') + '&type=' + [[${type}]] + '&biom=' + [[${biom}]] + '&order=' + [[${order}]] + '&favorite=' + [[${favorite}]];
+    });
+</script>
+<script th:inline="javascript">
+    $('#selectBiom').on('hidden.bs.select', function () {
+        document.location = '/monsters?biom=' + $(this).val().join(',') + '&type=' + [[${type}]] + '&cr=' + [[${cr}]] + '&order=' + [[${order}]] + '&favorite=' + [[${favorite}]];
+    });
+</script>
+</body>
+</html>

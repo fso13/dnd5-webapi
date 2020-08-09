@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="1" author="drudenko">
+        <createTable tableName="tb_users" remarks="Таблица баннеров">
+            <column name="id" type="VARCHAR(255)" remarks="Идентификатор">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="username" type="VARCHAR(1000)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(1000)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

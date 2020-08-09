@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="0" author="drudenko" failOnError="false">
+        <preConditions>
+            <columnExists tableName="tb_monsters" columnName="cr_number"/>
+        </preConditions>
+        <dropColumn tableName="tb_monsters" columnName="cr_number"/>
+    </changeSet>
+
+    <changeSet id="1" author="drudenko">
+        <addColumn tableName="tb_monsters">
+            <column name="cr_number" type="DECIMAL"/>
+        </addColumn>
+        <sql>
+            UPDATE tb_monsters SET cr_number = 0 where cr = '0';
+            UPDATE tb_monsters SET cr_number = 0.125 where cr = '1/8';
+            UPDATE tb_monsters SET cr_number = 0.25 where cr = '1/4';
+            UPDATE tb_monsters SET cr_number = 0.5 where cr = '1/2';
+            UPDATE tb_monsters SET cr_number = 1 where cr = '1';
+            UPDATE tb_monsters SET cr_number = 2 where cr = '2';
+            UPDATE tb_monsters SET cr_number = 3 where cr = '3';
+            UPDATE tb_monsters SET cr_number = 4 where cr = '4';
+            UPDATE tb_monsters SET cr_number = 5 where cr = '5';
+            UPDATE tb_monsters SET cr_number = 6 where cr = '6';
+            UPDATE tb_monsters SET cr_number = 7 where cr = '7';
+            UPDATE tb_monsters SET cr_number = 8 where cr = '8';
+            UPDATE tb_monsters SET cr_number = 9 where cr = '9';
+            UPDATE tb_monsters SET cr_number = 10 where cr = '10';
+            UPDATE tb_monsters SET cr_number = 11 where cr = '11';
+            UPDATE tb_monsters SET cr_number = 12 where cr = '12';
+            UPDATE tb_monsters SET cr_number = 13 where cr = '13';
+            UPDATE tb_monsters SET cr_number = 14 where cr = '14';
+            UPDATE tb_monsters SET cr_number = 15 where cr = '15';
+            UPDATE tb_monsters SET cr_number = 16 where cr = '16';
+            UPDATE tb_monsters SET cr_number = 17 where cr = '17';
+            UPDATE tb_monsters SET cr_number = 18 where cr = '18';
+            UPDATE tb_monsters SET cr_number = 19 where cr = '19';
+            UPDATE tb_monsters SET cr_number = 20 where cr = '20';
+            UPDATE tb_monsters SET cr_number = 21 where cr = '21';
+            UPDATE tb_monsters SET cr_number = 22 where cr = '22';
+            UPDATE tb_monsters SET cr_number = 23 where cr = '23';
+            UPDATE tb_monsters SET cr_number = 24 where cr = '24';
+            UPDATE tb_monsters SET cr_number = 30 where cr = '30';
+        </sql>
+    </changeSet>
+</databaseChangeLog>

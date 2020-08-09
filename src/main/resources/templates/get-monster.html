@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script data-ad-client="ca-pub-2005414424825102" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-13ZXZEL9Y2"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-13ZXZEL9Y2"></script>
+
+    <script crossorigin="anonymous" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script crossorigin="anonymous" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script crossorigin="anonymous" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.12/dist/css/bootstrap-select.min.css">
+
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.12/dist/js/bootstrap-select.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-13ZXZEL9Y2');
+    </script>
+    <style>
+        @media print {
+            .fixed-bottom,
+            #nav,
+            #printPageButton {
+                display: none;
+            }
+
+            * {
+                color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            html {
+                font-size: 90%;
+                margin: 0;
+                padding: 0;
+            }
+        }
+
+        .container {
+            box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+        }
+    </style>
+
+
+    <meta charset="utf-8">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <title th:text="${monster.name}"></title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+</head>
+<body>
+<header th:insert="fragments/header.html :: header"></header>
+
+<main class="container small page" id="dvContainer" role="main" style="margin-top:80px">
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex">
+                    <div class="p-2"><h2 class="my-5" th:utext="${monster.name}"></h2></div>
+                    <div class="ml-auto p-2">
+                        <button id="printPageButton" class="btn btn-outline-secondary hidden-print" onclick="window.print()"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>
+                            Сохранить как PDF
+                        </button>
+                    </div>
+                </div>
+                <h6 class="my-5" th:utext="'Опастность: ' + ${monster.cr} + ' ( ' + ${monster.exp} + ' )'"></h6>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="col">
+                    <img class="rounded float-right" th:alt="${monster.name}" th:src="${monster.imgStaticUrl}"
+                         width="300">
+                </div>
+                <!--                <div class="row">-->
+                <div th:utext="${monster.fiction}"></div>
+                <!--                </div>-->
+                <!--                <br>-->
+                <div class="row">
+                    <div class="col-5 bg-dark text-white">Броня</div>
+                    <div class="col-2 bg-dark text-white">HP</div>
+                    <div class="col-5 bg-dark text-white">Скорость</div>
+                    <div class="w-100"></div>
+                    <div class="col-5" th:utext="${monster.ac}"></div>
+                    <div class="col-2" th:utext="${monster.hp}"></div>
+                    <div class="col-5" th:utext="${monster.speed}"></div>
+                </div>
+                <div class="row">
+                    <div class="col-2 bg-dark text-white">СИЛ</div>
+                    <div class="col-2 bg-dark text-white">ЛОВ</div>
+                    <div class="col-2 bg-dark text-white">ХАР</div>
+                    <div class="col-2 bg-dark text-white">ИНТ</div>
+                    <div class="col-2 bg-dark text-white">МУД</div>
+                    <div class="col-2 bg-dark text-white">ТЕЛ</div>
+                    <div class="w-100"></div>
+                    <div class="col-2" th:utext="${monster.str}"></div>
+                    <div class="col-2" th:utext="${monster.dex}"></div>
+                    <div class="col-2" th:utext="${monster.cha}"></div>
+                    <div class="col-2" th:utext="${monster.intilect}"></div>
+                    <div class="col-2" th:utext="${monster.wis}"></div>
+                    <div class="col-2" th:utext="${monster.con}"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-4 bg-dark text-white">Навыки</div>
+                    <div class="col-4 bg-dark text-white">Чувства</div>
+                    <div class="col-4 bg-dark text-white">Языки</div>
+                    <div class="w-100"></div>
+                    <div class="col-4" th:utext="${#strings.listJoin(monster.skill,',')}"></div>
+                    <div class="col-4" th:utext="${monster.senses}"></div>
+                    <div class="col-4" th:utext="${#strings.listJoin(monster.languages,',')}"></div>
+                </div>
+                <div class="row">
+                    <div class="col-6 bg-dark text-white">Размер</div>
+                    <div class="col-6 bg-dark text-white">Окружение</div>
+                    <div class="w-100"></div>
+                    <div class="col-6" th:utext="${monster.size}"></div>
+                    <div class="col-6" th:utext="${#strings.listJoin(monster.bioms,',')}"></div>
+                </div>
+                <hr/>
+
+                <h6>Черты</h6>
+                <div th:each="trait : ${monster.monsterTrait}">
+                    <div class="row justify-content-between">
+                        <div class="col-6 bg-dark text-white" th:utext="${trait.name}"></div>
+                        <div class="col-6 bg-dark text-white" th:if="${trait.attack} != null"
+                             th:utext="${trait.attack}"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12" th:utext="${trait.text}"></div>
+                    </div>
+                    <hr/>
+                </div>
+
+                <h6>Действия</h6>
+                <div th:each="action : ${monster.monsterAction}">
+                    <div class="row justify-content-between">
+                        <div class="col-6 bg-dark text-white" th:utext="${action.name}"></div>
+                        <div class="col-6 bg-dark text-white" th:if="${action.attack} != null"
+                             th:utext="${action.attack}"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12" th:utext="${action.text}"></div>
+                    </div>
+                    <hr/>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer th:insert="fragments/footer.html :: footer"></footer>
+
+</body>
+</html>

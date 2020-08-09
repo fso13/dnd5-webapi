@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="1" author="drudenko">
+        <insert tableName="tb_spells">
+            <column name="name">АНТИПАТИЯ СИМПАТИЯ</column>
+            <column name="school">Очарование</column>
+            <column name="level">8</column>
+            <column name="casting_time">1 час</column>
+            <column name="range">60 футов</column>
+            <column name="components">В, С, M</column>
+            <column name="duration">10 дней</column>
+            <column name="text"> <![CDATA[
+Вы выбираете что-то в пределах дальности заклинания. Затем определите тип разумных существ. После этого цель заклинания наделяется аурой, которая привлекает или отпугивает выбранных существ Антипатия. Если существо может видеть цель или подходит на расстояние 60 футов к ней, оно должно сделать успешный спасбросок по Мудрости или будет напугано. Существо остается напуганным, пока оно может видеть цель или находится в пределах 60 футов от нее. Симпатия. Если существо может видеть цель или подходит на расстояние 60 футов к ней, оно должно сделать успешный спасбросок по Мудрости или будет вынуждено двигаться с целью зайти в область заклинания или вплотную приблизиться к цели заклинания. Если цель наносит урон или другим способом вредит существу, то оно может сделать спасбросок по Мудрости. Прерывание эффекта. Если существо заканчивает свой ход на расстоянии более 60 футов от цели и не может видеть её, оно делает спасбросок по Мудрости.]]>
+            </column>
+            <column name="name_en">ANTIPATHY SYMPATHY</column>
+        </insert>
+
+        <insert tableName="tb_spell_class_spells">
+            <column name="spells_name">АНТИПАТИЯ СИМПАТИЯ</column>
+            <column name="spell_class_name">Друид</column>
+        </insert>
+        <insert tableName="tb_spell_class_spells">
+            <column name="spells_name">АНТИПАТИЯ СИМПАТИЯ</column>
+            <column name="spell_class_name">Волшебник</column>
+        </insert>
+
+
+        <insert tableName="tb_spells">
+            <column name="name">УВЕЛИЧЕНИЕ УМЕНЬШЕНИЕ</column>
+            <column name="school">преобразование</column>
+            <column name="level">2</column>
+            <column name="casting_time">1 действие</column>
+            <column name="range">30 футов</column>
+            <column name="components">В, С, M</column>
+            <column name="duration">конц-я, до 1 мин</column>
+            <column name="text"> <![CDATA[
+Вы уменьшаете или увеличиваете существо или объект. Выберите существо или объект, который не находится во владении другого существа. Если цель не согласна, она может сделать спасбросок по Телосложению. Если целью является существо, то все его снаряжение также изменяет размер.Увеличение. Размер цели удваивается, а вес увеличивается в 8 раз. Таким образом размер существа увеличивается на одну категорию, например Среднее существо становится Большим. Пока заклинание действует, цель также получает преимущество при проверках по Силе и спасбросках по Силе. Оружие цели также увеличивается в размерах. Атаки этим оружием наносят дополнительные 1d4 урона.Уменьшение. Размер цели уменьшается вдвое, а её вес - в восемь раз. Таким образом размер существа уменьшается на одну категорию, например Среднее существо становится Маленьким. Пока заклинание действует, цель также получает помеху на проверки и спасброски по Силе. Атаки оружием наносят на 1d4 меньше урона.]]>
+            </column>
+            <column name="name_en">ENLARGE REDUCE</column>
+        </insert>
+
+        <insert tableName="tb_spell_class_spells">
+            <column name="spells_name">УВЕЛИЧЕНИЕ УМЕНЬШЕНИЕ</column>
+            <column name="spell_class_name">Чародей</column>
+        </insert>
+        <insert tableName="tb_spell_class_spells">
+            <column name="spells_name">УВЕЛИЧЕНИЕ УМЕНЬШЕНИЕ</column>
+            <column name="spell_class_name">Волшебник</column>
+        </insert>
+
+        <sql>
+            delete from tb_spell_class_spells where spells_name = 'АНТИПАТИЯ/СИМПАТИЯ';
+            delete from tb_spells where name = 'АНТИПАТИЯ/СИМПАТИЯ';
+
+            delete from tb_spell_class_spells where spells_name = 'УВЕЛИЧЕНИЕ/УМЕНЬШЕНИЕ';
+            delete from tb_spells where name = 'УВЕЛИЧЕНИЕ/УМЕНЬШЕНИЕ';
+        </sql>
+    </changeSet>
+</databaseChangeLog>

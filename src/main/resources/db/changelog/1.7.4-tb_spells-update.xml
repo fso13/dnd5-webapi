@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="1" author="drudenko">
+        <sql>
+            UPDATE tb_spells SET school = 'Некромантия' where school = 'некромантия';
+            UPDATE tb_spells SET school = 'Некромантия' where school = '3 круг Necromancy';
+            UPDATE tb_spells SET school = 'Преобразование' where school = 'Преобразование';
+            UPDATE tb_spells SET school = 'Вызов' where school = 'вызов';
+            UPDATE tb_spells SET school = 'Вызов' where school = 'призыв';
+            UPDATE tb_spells SET school = 'Вызов' where school = 'Призыв';
+            UPDATE tb_spells SET school = 'Прорицание' where school = 'прорицание';
+            UPDATE tb_spells SET school = 'Иллюзия' where school = 'иллюзия';
+            UPDATE tb_spells SET school = 'Очарование' where school = 'очарование';
+            UPDATE tb_spells SET school = 'Ограждение' where school = 'ограждение';
+            UPDATE tb_spells SET school = 'Ограждение' where school = 'Ограждение';
+            UPDATE tb_spells SET school = 'Преобразование' where school = 'Изенение';
+            UPDATE tb_spells SET school = 'Преобразование' where school = 'преобразование';
+            UPDATE tb_spells SET school = 'Некромантия' where school = '6 круг Necromancy';
+            UPDATE tb_spells SET school = 'Некромантия' where school = '2 круг Necromancy';
+            UPDATE tb_spells SET school = 'Вызов' where school = 'Исцеляющий дух';
+            UPDATE tb_spells SET school = 'Преобразование' where school = 'Крошечный слуга';
+            UPDATE tb_spells SET school = 'Воплощение' where school = 'проявлние';
+            UPDATE tb_spells SET school = 'Преобразование' where school = 'Превращение';
+            UPDATE tb_spells SET school = 'Воплощение' where school = 'проявление';
+            UPDATE tb_spells SET school = 'Воплощение' where school = 'проявление';
+        </sql>
+    </changeSet>
+</databaseChangeLog>

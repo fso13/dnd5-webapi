@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="1" author="drudenko">
+        <dropTable tableName="tb_spell_favorite"/>
+
+        <createTable tableName="tb_spell_favorite">
+            <column name="spell_id" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="profile_id" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="favorite" type="boolean"/>
+        </createTable>
+        <addPrimaryKey tableName="tb_spell_favorite" columnNames="spell_id,profile_id"/>
+    </changeSet>
+
+    <changeSet id="2" author="drudenko">
+        <dropTable tableName="tb_monster_favorite"/>
+
+        <createTable tableName="tb_monster_favorite">
+            <column name="monster_id" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="profile_id" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="favorite" type="boolean"/>
+        </createTable>
+        <addPrimaryKey tableName="tb_monster_favorite" columnNames="monster_id,profile_id"/>
+    </changeSet>
+
+    <changeSet id="3" author="drudenko">
+        <createTable tableName="tb_profiles">
+            <column name="id" type="varchar(255)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_current" type="boolean"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="4" author="drudenko">
+        <sql>
+            insert into tb_profiles (id, name, user_id,is_current) SELECT id,'Default',id, true from tb_users
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
