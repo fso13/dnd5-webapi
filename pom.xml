@@ -10,7 +10,7 @@
     </parent>
     <groupId>ru.drudenko.dnd5</groupId>
     <artifactId>webapi</artifactId>
-    <version>1.8.30</version>
+    <version>1.8.31</version>
     <name>dnd5-webapi</name>
     <description>dnd5-webapi</description>
 
