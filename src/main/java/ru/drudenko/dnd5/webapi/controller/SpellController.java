@@ -6,7 +6,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import ru.drudenko.dnd5.webapi.dto.common.FavoriteDto;
 import ru.drudenko.dnd5.webapi.dto.common.PaginationParametersDto;
@@ -39,6 +37,9 @@ import java.util.stream.Stream;
 @RequestMapping("spells")
 @RequiredArgsConstructor
 public class SpellController {
+    public static final Stream<String> SCHOOLS_STREAM = Stream.of("Очарование", "Воплощение", "Преобразование", "Некромантия", "Ограждение", "Проявление", "Иллюзия", "Прорицание", "Вызов");
+    public static final Stream<String> CLASSES_STREAM = Stream.of("Жрец", "Друид", "Бард", "Паладин", "Рейнджер", "Чародей", "Колдун", "Волшебник");
+    public static final Stream<String> LEVELS_SPELL_STREAM = Stream.of("0", "1", "2", "3", "4", "5", "6", "7", "8", "9");
     private final SpellService spellService;
     private final UserService userService;
 
@@ -66,34 +67,25 @@ public class SpellController {
 
     @GetMapping
     public String getAllSpells(Model model,
-                               @RequestParam(name = "name", required = false) String name,
-                               @RequestParam(name = "class", required = false) String spellClass,
-                               @RequestParam(name = "level", required = false) String level,
-                               @RequestParam(name = "school", required = false) String school,
-                               @RequestParam(name = "favorite", defaultValue = "false", required = false) Boolean favorite,
+                               @ModelAttribute SpellSearchDto spellSearchDto,
                                @ModelAttribute PaginationParametersDto paginationParams) {
 
-        if (!StringUtils.isEmpty(level)) {
-            model.addAttribute("level", level);
-        }
-        if (!StringUtils.isEmpty(name)) {
-            model.addAttribute("name", name);
-        }
-        if (!StringUtils.isEmpty(spellClass)) {
-            model.addAttribute("class", spellClass);
-        }
-        if (!StringUtils.isEmpty(school)) {
-            model.addAttribute("school", school);
-        }
+        Optional.ofNullable(spellSearchDto.getLevel()).ifPresent(level -> model.addAttribute("level", level));
+        Optional.ofNullable(spellSearchDto.getName()).ifPresent(name -> model.addAttribute("name", name));
+        Optional.ofNullable(spellSearchDto.getSpellClass()).ifPresent(spellClass -> model.addAttribute("spellClass", spellClass));
+        Optional.ofNullable(spellSearchDto.getSchool()).ifPresent(school -> model.addAttribute("school", school));
+        model.addAttribute("favorite", spellSearchDto.getFavorite());
 
-        addSpellLevelAttributes(model, level);
-        addSpellClassAttributes(model, spellClass);
-        addSpellSchoolsAttributes(model, school);
+        addSpellLevelAttributes(model, spellSearchDto.getLevel());
+        addSpellClassAttributes(model, spellSearchDto.getSpellClass());
+        addSpellSchoolsAttributes(model, spellSearchDto.getSchool());
+
         String username = SecurityHelper.getUsernameAndAddProfilesAttributes(model, userService);
 
+        spellSearchDto.setUserName(username);
+        spellSearchDto.setPaginationParams(paginationParams);
 
-        model.addAttribute("favorite", favorite);
-        Page<SpellDto> spells = spellService.search(SpellSearchDto.builder().favorite(favorite).userName(username).name(name).school(school).spellClass(spellClass).level(level).paginationParams(paginationParams).build());
+        Page<SpellDto> spells = spellService.search(spellSearchDto);
         model.addAttribute("spells", spells);
 
         int totalPages = spells.getTotalPages();
@@ -108,26 +100,20 @@ public class SpellController {
     }
 
     private void addSpellClassAttributes(Model model, String spellClass) {
-        model.addAttribute("classes", Stream.of("Жрец", "Друид", "Бард", "Паладин", "Рейнджер", "Чародей", "Колдун", "Волшебник")
-                .map(ss -> SpellClassDto.builder().name(ss).selected(Optional.ofNullable(spellClass).filter(s2 -> s2.contains(ss)).isPresent()).build()).collect(Collectors.toList()));
+        model.addAttribute("classes", CLASSES_STREAM
+                .map(ss -> SpellClassDto.builder().name(ss).selected(Optional.ofNullable(spellClass).filter(s2 -> s2.contains(ss)).isPresent()).build())
+                .collect(Collectors.toList()));
     }
 
     private void addSpellSchoolsAttributes(Model model, String school) {
-        model.addAttribute("schools", Stream.of(
-                "Очарование",
-                "Воплощение",
-                "Преобразование",
-                "Некромантия",
-                "Ограждение",
-                "Проявление",
-                "Иллюзия",
-                "Прорицание",
-                "Вызов")
-                .map(ss -> SpellSchoolDto.builder().name(ss).selected(Optional.ofNullable(school).filter(s2 -> s2.contains(ss)).isPresent()).build()).collect(Collectors.toList()));
+        model.addAttribute("schools", SCHOOLS_STREAM
+                .map(ss -> SpellSchoolDto.builder().name(ss).selected(Optional.ofNullable(school).filter(s2 -> s2.contains(ss)).isPresent()).build())
+                .collect(Collectors.toList()));
     }
 
     private void addSpellLevelAttributes(Model model, String levels) {
-        model.addAttribute("levels", Stream.of("0", "1", "2", "3", "4", "5", "6", "7", "8", "9")
-                .map(ss -> SpellLevelDto.builder().name(ss).selected(Optional.ofNullable(levels).filter(s2 -> s2.contains(ss)).isPresent()).build()).collect(Collectors.toList()));
+        model.addAttribute("levels", LEVELS_SPELL_STREAM
+                .map(ss -> SpellLevelDto.builder().name(ss).selected(Optional.ofNullable(levels).filter(s2 -> s2.contains(ss)).isPresent()).build())
+                .collect(Collectors.toList()));
     }
 }

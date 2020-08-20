@@ -68,8 +68,8 @@ class MonsterServiceImpl implements MonsterService {
             Predicate predicatePersonIs = criteriaBuilder.isNotNull(root.get("name"));
             Predicate ands = criteriaBuilder.and(predicatePersonIs);
 
-            if (!StringUtils.isEmpty(filter.getBioms())) {
-                Predicate predicate = root.get("bioms").in(Arrays.asList(filter.getBioms().split(",")));
+            if (!StringUtils.isEmpty(filter.getBiom())) {
+                Predicate predicate = root.get("bioms").in(Arrays.asList(filter.getBiom().split(",")));
                 ands = criteriaBuilder.and(ands, predicate);
             }
 

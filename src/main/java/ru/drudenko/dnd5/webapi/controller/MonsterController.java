@@ -6,7 +6,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import ru.drudenko.dnd5.webapi.dto.common.FavoriteDto;
 import ru.drudenko.dnd5.webapi.dto.common.PaginationParametersDto;
@@ -41,6 +39,9 @@ import java.util.stream.Stream;
 @RequestMapping("monsters")
 @RequiredArgsConstructor
 public class MonsterController {
+    public static final Stream<String> CRS_STREAM = Stream.of("0", "1/8", "1/4", "1/2", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "30");
+    public static final Stream<String> MONSTER_TYPES_STREAM = Stream.of("гуманоид", "аберрация", "монстр", "нежить", "зверь", "великан", "конструкт", "небожитель", "слизь", "дракон", "растение", "демон", "рой крошечных зверей", "элементаль", "фея", "исчадие");
+    public static final Stream<String> BIOMS_STREAM = Stream.of("Холмы", "Побережье", "Подземье", "Болота", "Лес", "Заполярье", "Равнина", "Город", "Горы", "Пустыня");
     private final MonsterService monsterService;
     private final UserService userService;
 
@@ -67,39 +68,26 @@ public class MonsterController {
 
     @GetMapping
     public String getAllSpells(Model model,
-                               @RequestParam(name = "name", required = false) String name,
-                               @RequestParam(name = "cr", required = false) String cr,
-                               @RequestParam(name = "biom", required = false) String biom,
-                               @RequestParam(name = "type", required = false) String type,
-                               @RequestParam(name = "order", required = false) String order,
-                               @RequestParam(name = "favorite", defaultValue = "false", required = false) Boolean favorite,
+                               @ModelAttribute MonsterSearchDto monsterSearchDto,
                                @ModelAttribute PaginationParametersDto paginationParams) {
 
         String username = SecurityHelper.getUsernameAndAddProfilesAttributes(model, userService);
+        monsterSearchDto.setUserName(username);
+        monsterSearchDto.setPaginationParams(paginationParams);
+        Page<MonsterDto> monsters = monsterService.search(monsterSearchDto);
 
-        Page<MonsterDto> monsters = monsterService.search(MonsterSearchDto.builder().userName(username).order(order).favorite(favorite).name(name).cr(cr).type(type).bioms(biom).paginationParams(paginationParams).build());
-        if (!StringUtils.isEmpty(name)) {
-            model.addAttribute("name", name);
-        }
-        if (!StringUtils.isEmpty(cr)) {
-            model.addAttribute("cr", cr);
-        }
+        Optional.ofNullable(monsterSearchDto.getName()).ifPresent(name -> model.addAttribute("name", name));
+        Optional.ofNullable(monsterSearchDto.getCr()).ifPresent(cr -> model.addAttribute("cr", cr));
+        Optional.ofNullable(monsterSearchDto.getBiom()).ifPresent(biom -> model.addAttribute("biom", biom));
+        Optional.ofNullable(monsterSearchDto.getType()).ifPresent(type -> model.addAttribute("type", type));
+        Optional.ofNullable(monsterSearchDto.getOrder()).ifPresent(order -> model.addAttribute("order", order));
 
-        if (!StringUtils.isEmpty(biom)) {
-            model.addAttribute("biom", biom);
-        }
-        if (!StringUtils.isEmpty(type)) {
-            model.addAttribute("type", type);
-        }
-        if (!StringUtils.isEmpty(order)) {
-            model.addAttribute("order", order);
-        }
-        model.addAttribute("favorite", favorite);
+        model.addAttribute("favorite", monsterSearchDto.getFavorite());
         model.addAttribute("monsters", monsters);
 
-        addMonsterBiomsAttributes(model, biom);
-        addMonsterCrAttributes(model, cr);
-        addMonsterTypeAttributes(model, type);
+        addMonsterBiomsAttributes(model, monsterSearchDto.getBiom());
+        addMonsterCrAttributes(model, monsterSearchDto.getCr());
+        addMonsterTypeAttributes(model, monsterSearchDto.getType());
 
         int totalPages = monsters.getTotalPages();
         if (totalPages > 0) {
@@ -114,19 +102,19 @@ public class MonsterController {
 
     private void addMonsterCrAttributes(Model model, String crs) {
         List<String> strings = Optional.ofNullable(crs).map(s -> Arrays.asList(s.split(","))).orElse(Collections.emptyList());
-        model.addAttribute("crs", Stream.of("0", "1/8", "1/4", "1/2", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "30")
+        model.addAttribute("crs", CRS_STREAM
                 .map(ss -> MonsterCrDto.builder().name(ss).selected(Optional.of(strings).filter(s2 -> s2.contains(ss)).isPresent()).build()).collect(Collectors.toList()));
     }
 
     private void addMonsterTypeAttributes(Model model, String types) {
 
-        model.addAttribute("types", Stream.of("гуманоид", "аберрация", "монстр", "нежить", "зверь", "великан", "конструкт", "небожитель", "слизь", "дракон", "растение", "демон", "рой крошечных зверей", "элементаль", "фея", "исчадие")
+        model.addAttribute("types", MONSTER_TYPES_STREAM
                 .map(ss -> MonsterTypeDto.builder().name(ss).selected(Optional.ofNullable(types).filter(s2 -> s2.contains(ss)).isPresent()).build()).collect(Collectors.toList()));
     }
 
     private void addMonsterBiomsAttributes(Model model, String bioms) {
 
-        model.addAttribute("bioms", Stream.of("Холмы", "Побережье", "Подземье", "Болота", "Лес", "Заполярье", "Равнина", "Город", "Горы", "Пустыня")
+        model.addAttribute("bioms", BIOMS_STREAM
                 .map(ss -> MonsterBiomDto.builder().name(ss).selected(Optional.ofNullable(bioms).filter(s2 -> s2.contains(ss)).isPresent()).build()).collect(Collectors.toList()));
     }
 }
