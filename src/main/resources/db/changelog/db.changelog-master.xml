@@ -19,4 +19,11 @@
     <include file="1.8.0-tb_spell_favorite-create.xml" relativeToChangelogFile="true"/>
     <include file="1.8.1-tb_confirm_email_token-create.xml" relativeToChangelogFile="true"/>
     <include file="1.8.2-add_new_spells.xml" relativeToChangelogFile="true"/>
+
+    <changeSet id="finalize-1.8.31" author="drudenko">
+        <tagDatabase tag="v1.8.31"/>
+    </changeSet>
+
+    <include file="1.8.31-delete-spells.xml" relativeToChangelogFile="true"/>
+
 </databaseChangeLog>

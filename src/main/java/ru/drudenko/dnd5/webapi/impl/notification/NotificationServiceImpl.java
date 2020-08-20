@@ -22,6 +22,9 @@ class NotificationServiceImpl implements NotificationService {
     @Value("${ru.drudenko.dnd5.webapi.contextPath:dnd5-webapi.herokuapp.com}")
     private String contextPath;
 
+    @Value("${spring.mail.username}")
+    private String fromEmail;
+
     @Override
     public void sendResetPassword(ResetPasswordDto resetPasswordDto) {
         MimeMessagePreparator messagePreparator = mimeMessage -> {

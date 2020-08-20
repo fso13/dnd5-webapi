@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="1" author="drudenko">
+        <sql>
+            delete from tb_spell_class_spells where spells_name = 'Глухота/слепота';
+            delete from tb_spells where name = 'Глухота/слепота';
+        </sql>
+    </changeSet>
+</databaseChangeLog>
