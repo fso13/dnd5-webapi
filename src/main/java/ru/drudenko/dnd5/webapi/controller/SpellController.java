@@ -27,19 +27,19 @@ import ru.drudenko.dnd5.webapi.service.UserService;
 import ru.drudenko.dnd5.webapi.utils.SecurityHelper;
 import ru.drudenko.dnd5.webapi.utils.StringNullEditor;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 @Controller
 @RequestMapping("spells")
 @RequiredArgsConstructor
 public class SpellController {
-    public static final Stream<String> SCHOOLS_STREAM = Stream.of("Очарование", "Воплощение", "Преобразование", "Некромантия", "Ограждение", "Проявление", "Иллюзия", "Прорицание", "Вызов");
-    public static final Stream<String> CLASSES_STREAM = Stream.of("Жрец", "Друид", "Бард", "Паладин", "Рейнджер", "Чародей", "Колдун", "Волшебник");
-    public static final Stream<String> LEVELS_SPELL_STREAM = Stream.of("0", "1", "2", "3", "4", "5", "6", "7", "8", "9");
+    public static final List<String> SCHOOLS_STREAM = Arrays.asList("Очарование", "Воплощение", "Преобразование", "Некромантия", "Ограждение", "Проявление", "Иллюзия", "Прорицание", "Вызов");
+    public static final List<String> CLASSES_STREAM = Arrays.asList("Жрец", "Друид", "Бард", "Паладин", "Рейнджер", "Чародей", "Колдун", "Волшебник");
+    public static final List<String> LEVELS_SPELL_STREAM = Arrays.asList("0", "1", "2", "3", "4", "5", "6", "7", "8", "9");
     private final SpellService spellService;
     private final UserService userService;
 
@@ -100,19 +100,19 @@ public class SpellController {
     }
 
     private void addSpellClassAttributes(Model model, String spellClass) {
-        model.addAttribute("classes", CLASSES_STREAM
+        model.addAttribute("classes", CLASSES_STREAM.stream()
                 .map(ss -> SpellClassDto.builder().name(ss).selected(Optional.ofNullable(spellClass).filter(s2 -> s2.contains(ss)).isPresent()).build())
                 .collect(Collectors.toList()));
     }
 
     private void addSpellSchoolsAttributes(Model model, String school) {
-        model.addAttribute("schools", SCHOOLS_STREAM
+        model.addAttribute("schools", SCHOOLS_STREAM.stream()
                 .map(ss -> SpellSchoolDto.builder().name(ss).selected(Optional.ofNullable(school).filter(s2 -> s2.contains(ss)).isPresent()).build())
                 .collect(Collectors.toList()));
     }
 
     private void addSpellLevelAttributes(Model model, String levels) {
-        model.addAttribute("levels", LEVELS_SPELL_STREAM
+        model.addAttribute("levels", LEVELS_SPELL_STREAM.stream()
                 .map(ss -> SpellLevelDto.builder().name(ss).selected(Optional.ofNullable(levels).filter(s2 -> s2.contains(ss)).isPresent()).build())
                 .collect(Collectors.toList()));
     }
