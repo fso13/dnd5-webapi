@@ -10,12 +10,9 @@ import org.springframework.util.Assert;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.Collections;
-import java.util.List;
 
 public class RepositoryUtils<T> {
     private final EntityManager em;
@@ -30,10 +27,10 @@ public class RepositoryUtils<T> {
 
         Assert.notNull(query, "TypedQuery must not be null!");
 
-        List<Long> totals = query.getResultList();
+        var totals = query.getResultList();
         long total = 0L;
 
-        for (Long element : totals) {
+        for (var element : totals) {
             total += element == null ? 0 : element;
         }
 
@@ -41,10 +38,10 @@ public class RepositoryUtils<T> {
     }
 
     public Page<T> findAll(Specification<T> specification, Pageable pageRequest) {
-        CriteriaBuilder builder = em.getCriteriaBuilder();
-        CriteriaQuery<T> query = builder.createQuery(domainClass);
-        Root<T> root = query.from(domainClass);
-        Predicate predicate = specification.toPredicate(root, query, builder);
+        var builder = em.getCriteriaBuilder();
+        var query = builder.createQuery(domainClass);
+        var root = query.from(domainClass);
+        var predicate = specification.toPredicate(root, query, builder);
         if (predicate != null) {
             query.where(predicate);
         }
@@ -61,9 +58,9 @@ public class RepositoryUtils<T> {
     }
 
     protected <S extends T> TypedQuery<Long> getCountQuery(@Nullable Specification<S> spec, Class<S> domainClass) {
-        CriteriaBuilder builder = em.getCriteriaBuilder();
-        CriteriaQuery<Long> query = builder.createQuery(Long.class);
-        Root<S> root = applySpecificationToCriteria(spec, domainClass, query);
+        var builder = em.getCriteriaBuilder();
+        var query = builder.createQuery(Long.class);
+        var root = applySpecificationToCriteria(spec, domainClass, query);
         if (query.isDistinct()) {
             query.select(builder.countDistinct(root));
         } else {
@@ -78,14 +75,14 @@ public class RepositoryUtils<T> {
         Assert.notNull(domainClass, "Domain class must not be null!");
         Assert.notNull(query, "CriteriaQuery must not be null!");
 
-        Root<U> root = query.from(domainClass);
+        var root = query.from(domainClass);
 
         if (spec == null) {
             return root;
         }
 
-        CriteriaBuilder builder = em.getCriteriaBuilder();
-        Predicate predicate = spec.toPredicate(root, query, builder);
+        var builder = em.getCriteriaBuilder();
+        var predicate = spec.toPredicate(root, query, builder);
 
         if (predicate != null) {
             query.where(predicate);

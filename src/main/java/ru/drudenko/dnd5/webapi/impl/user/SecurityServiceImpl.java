@@ -4,14 +4,11 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.drudenko.dnd5.webapi.dto.user.UserDto;
 import ru.drudenko.dnd5.webapi.service.SecurityService;
 
 import java.time.Instant;
@@ -28,8 +25,8 @@ class SecurityServiceImpl implements SecurityService {
 
     @Override
     public void autoLogin(String username, String password) {
-        UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
+        var userDetails = userDetailsService.loadUserByUsername(username);
+        var usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
 
         authenticationManager.authenticate(usernamePasswordAuthenticationToken);
 
@@ -42,7 +39,7 @@ class SecurityServiceImpl implements SecurityService {
     @Override
     @Transactional
     public String validatePasswordResetToken(String id, String token) {
-        PasswordResetToken passToken =
+        var passToken =
                 passwordTokenRepository.findById(token).orElse(null);
         if (passToken == null || passToken.getUser() == null || !passToken.getUser().getId().equals(id)) {
             return "invalidToken";
@@ -52,9 +49,9 @@ class SecurityServiceImpl implements SecurityService {
             return "expired";
         }
 
-        User user = passToken.getUser();
-        UserDto userDto = userMapper.fromEntity(user);
-        Authentication auth = new UsernamePasswordAuthenticationToken(
+        var user = passToken.getUser();
+        var userDto = userMapper.fromEntity(user);
+        var auth = new UsernamePasswordAuthenticationToken(
                 userDto, null, Collections.singletonList(
                 new SimpleGrantedAuthority("CHANGE_PASSWORD_PRIVILEGE")));
         SecurityContextHolder.getContext().setAuthentication(auth);

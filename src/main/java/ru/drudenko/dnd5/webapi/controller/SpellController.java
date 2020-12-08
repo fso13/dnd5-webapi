@@ -2,7 +2,6 @@ package ru.drudenko.dnd5.webapi.controller;
 
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import ru.drudenko.dnd5.webapi.dto.common.FavoriteDto;
 import ru.drudenko.dnd5.webapi.dto.common.PaginationParametersDto;
 import ru.drudenko.dnd5.webapi.dto.spell.SpellClassDto;
-import ru.drudenko.dnd5.webapi.dto.spell.SpellDto;
 import ru.drudenko.dnd5.webapi.dto.spell.SpellLevelDto;
 import ru.drudenko.dnd5.webapi.dto.spell.SpellSchoolDto;
 import ru.drudenko.dnd5.webapi.dto.spell.SpellSearchDto;
@@ -58,7 +56,7 @@ public class SpellController {
 
     @GetMapping("/{id}")
     public String getSpells(@PathVariable("id") String id, Model model) {
-        SpellDto spell = spellService.getByName(id);
+        var spell = spellService.getByName(id);
         model.addAttribute("spell", spell);
         SecurityHelper.getUsernameAndAddProfilesAttributes(model, userService);
 
@@ -80,17 +78,17 @@ public class SpellController {
         addSpellClassAttributes(model, spellSearchDto.getSpellClass());
         addSpellSchoolsAttributes(model, spellSearchDto.getSchool());
 
-        String username = SecurityHelper.getUsernameAndAddProfilesAttributes(model, userService);
+        var username = SecurityHelper.getUsernameAndAddProfilesAttributes(model, userService);
 
         spellSearchDto.setUserName(username);
         spellSearchDto.setPaginationParams(paginationParams);
 
-        Page<SpellDto> spells = spellService.search(spellSearchDto);
+        var spells = spellService.search(spellSearchDto);
         model.addAttribute("spells", spells);
 
-        int totalPages = spells.getTotalPages();
+        var totalPages = spells.getTotalPages();
         if (totalPages > 0) {
-            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
+            var pageNumbers = IntStream.rangeClosed(1, totalPages)
                     .boxed()
                     .collect(Collectors.toList());
             model.addAttribute("pageNumbers", pageNumbers);

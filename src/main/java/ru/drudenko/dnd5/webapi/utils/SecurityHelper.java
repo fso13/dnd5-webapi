@@ -10,7 +10,7 @@ public final class SecurityHelper {
 
     public static String getUsernameAndAddProfilesAttributes(Model model, UserService userService) {
         if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof org.springframework.security.core.userdetails.User) {
-            String username = ((org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
+            var username = ((org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
             model.addAttribute("profiles", userService.findByUsername(username).getProfileDtos());
             return username;
         }

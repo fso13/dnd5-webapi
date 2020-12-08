@@ -2,7 +2,6 @@ package ru.drudenko.dnd5.webapi.controller;
 
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +18,6 @@ import ru.drudenko.dnd5.webapi.dto.common.FavoriteDto;
 import ru.drudenko.dnd5.webapi.dto.common.PaginationParametersDto;
 import ru.drudenko.dnd5.webapi.dto.monster.MonsterBiomDto;
 import ru.drudenko.dnd5.webapi.dto.monster.MonsterCrDto;
-import ru.drudenko.dnd5.webapi.dto.monster.MonsterDto;
 import ru.drudenko.dnd5.webapi.dto.monster.MonsterSearchDto;
 import ru.drudenko.dnd5.webapi.dto.monster.MonsterTypeDto;
 import ru.drudenko.dnd5.webapi.service.MonsterService;
@@ -57,23 +55,25 @@ public class MonsterController {
         monsterService.setFavorite(id, favoriteDto);
     }
 
+    @ApiOperation(value = "Получение монстра по идентификатору")
     @GetMapping("/{id}")
-    public String getSpells(@PathVariable("id") String id, Model model) {
-        MonsterDto monster = monsterService.getByName(id);
+    public String getMonster(@PathVariable("id") String id, Model model) {
+        var monster = monsterService.getByName(id);
         model.addAttribute("monster", monster);
         SecurityHelper.getUsernameAndAddProfilesAttributes(model, userService);
         return "get-monster";
     }
 
+    @ApiOperation(value = "Получение списка монстров по фильтру")
     @GetMapping
-    public String getAllSpells(Model model,
-                               @ModelAttribute MonsterSearchDto monsterSearchDto,
-                               @ModelAttribute PaginationParametersDto paginationParams) {
+    public String getAllMonsters(Model model,
+                                 @ModelAttribute MonsterSearchDto monsterSearchDto,
+                                 @ModelAttribute PaginationParametersDto paginationParams) {
 
-        String username = SecurityHelper.getUsernameAndAddProfilesAttributes(model, userService);
+        var username = SecurityHelper.getUsernameAndAddProfilesAttributes(model, userService);
         monsterSearchDto.setUserName(username);
         monsterSearchDto.setPaginationParams(paginationParams);
-        Page<MonsterDto> monsters = monsterService.search(monsterSearchDto);
+        var monsters = monsterService.search(monsterSearchDto);
 
         Optional.ofNullable(monsterSearchDto.getName()).ifPresent(name -> model.addAttribute("name", name));
         Optional.ofNullable(monsterSearchDto.getCr()).ifPresent(cr -> model.addAttribute("cr", cr));
@@ -88,9 +88,9 @@ public class MonsterController {
         addMonsterCrAttributes(model, monsterSearchDto.getCr());
         addMonsterTypeAttributes(model, monsterSearchDto.getType());
 
-        int totalPages = monsters.getTotalPages();
+        var totalPages = monsters.getTotalPages();
         if (totalPages > 0) {
-            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
+            var pageNumbers = IntStream.rangeClosed(1, totalPages)
                     .boxed()
                     .collect(Collectors.toList());
             model.addAttribute("pageNumbers", pageNumbers);
@@ -100,7 +100,7 @@ public class MonsterController {
     }
 
     private void addMonsterCrAttributes(Model model, String crs) {
-        List<String> strings = Optional.ofNullable(crs).map(s -> Arrays.asList(s.split(","))).orElse(Collections.emptyList());
+        var strings = Optional.ofNullable(crs).map(s -> Arrays.asList(s.split(","))).orElse(Collections.emptyList());
         model.addAttribute("crs", CRS_STREAM.stream()
                 .map(ss -> MonsterCrDto.builder().name(ss).selected(Optional.of(strings).filter(s2 -> s2.contains(ss)).isPresent()).build()).collect(Collectors.toList()));
     }

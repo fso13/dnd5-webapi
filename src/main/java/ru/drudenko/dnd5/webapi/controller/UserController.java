@@ -87,7 +87,7 @@ public class UserController {
 
     @GetMapping("/changePassword")
     public String reset(Model model, @RequestParam("id") String id, @RequestParam("token") String token) {
-        String result = securityService.validatePasswordResetToken(id, token);
+        var result = securityService.validatePasswordResetToken(id, token);
         if (result != null) {
             model.addAttribute("message", "auth.message." + result);
             return "redirect:/login";
@@ -114,11 +114,11 @@ public class UserController {
 
     @PostMapping("/savePassword")
     public String savePassword(Model model, UserDto newuser) {
-        UserDto user =
+        var user =
                 ((UserDto) SecurityContextHolder.getContext()
                         .getAuthentication().getPrincipal());
 
-        String pw = newuser.getPassword();
+        var pw = newuser.getPassword();
 
         user.setPassword(newuser.getPassword());
         model.asMap().clear();

@@ -28,11 +28,11 @@ class UserServiceImpl implements UserService, ProfileService {
 
     @Override
     public void registration(UserDto userDto) {
-        ConfirmEmailToken confirmEmailToken = new ConfirmEmailToken();
+        var confirmEmailToken = new ConfirmEmailToken();
         //todo переписать регистрацию
-        User user = save(userDto);
+        var user = save(userDto);
 
-        Profile profile = new Profile();
+        var profile = new Profile();
         profile.setName("Default");
         profile.setUser(user);
         profile.setUserId(user.getId());
@@ -49,7 +49,7 @@ class UserServiceImpl implements UserService, ProfileService {
     @Override
     public void saveNewPassword(UserDto userDto) {
 
-        User user = userRepository.findByUsername(userDto.getUsername());
+        var user = userRepository.findByUsername(userDto.getUsername());
         userDto.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
         user.setPassword(userDto.getPassword());
         userRepository.save(user);
@@ -58,9 +58,9 @@ class UserServiceImpl implements UserService, ProfileService {
     @Transactional
     @Override
     public void createProfile(String username, ProfileDto profileDto) {
-        User byUsername = userRepository.findByUsername(username);
+        var byUsername = userRepository.findByUsername(username);
 
-        Profile profile = new Profile();
+        var profile = new Profile();
         profile.setName(profileDto.getName());
         profile.setUserId(byUsername.getId());
         profile.setCurrent(false);
@@ -71,7 +71,7 @@ class UserServiceImpl implements UserService, ProfileService {
     @Transactional
     @Override
     public void setCurrentProfile(String username, ProfileDto profileDto) {
-        User byUsername = userRepository.findByUsername(username);
+        var byUsername = userRepository.findByUsername(username);
         byUsername.getProfiles().forEach(profile -> {
             profile.setCurrent(profileDto.getName().equals(profile.getName()));
             userRepository.save(profile);
@@ -81,7 +81,7 @@ class UserServiceImpl implements UserService, ProfileService {
     @Transactional
     @Override
     public UserDto confirm(String hashToken) {
-        ConfirmEmailToken confirmEmailToken = confirmEmailTokenRepository.findById(hashToken).orElse(null);
+        var confirmEmailToken = confirmEmailTokenRepository.findById(hashToken).orElse(null);
         if (confirmEmailToken == null) {
             throw new IllegalArgumentException("Токен не найден.");
         }
@@ -97,8 +97,8 @@ class UserServiceImpl implements UserService, ProfileService {
 
     @Override
     public UserDto findByEmail(String email) {
-        User byUsername = userRepository.findByEmail(email);
-        UserDto userDto = userMapper.fromEntity(byUsername);
+        var byUsername = userRepository.findByEmail(email);
+        var userDto = userMapper.fromEntity(byUsername);
         if (userDto != null) {
             userDto.setProfileDtos(byUsername.getProfiles().stream().map(userMapper::fromEntity).collect(Collectors.toList()));
         }
@@ -108,14 +108,14 @@ class UserServiceImpl implements UserService, ProfileService {
     @Transactional
     @Override
     public void deleteProfile(String username, ProfileDto profileDto) {
-        User byUsername = userRepository.findByUsername(username);
-        Profile profile = byUsername.getProfiles().stream()
+        var byUsername = userRepository.findByUsername(username);
+        var profile = byUsername.getProfiles().stream()
                 .filter(profile1 -> profile1.getName().equals(profileDto.getName()) && !profile1.getName().equals("Default"))
                 .findAny().get();
 
 
         if (profile.isCurrent()) {
-            Profile defaultProfile = byUsername.getProfiles().stream()
+            var defaultProfile = byUsername.getProfiles().stream()
                     .filter(profile1 -> profile1.getName().equals("Default"))
                     .findAny().get();
 
@@ -130,7 +130,7 @@ class UserServiceImpl implements UserService, ProfileService {
     }
 
     private User save(UserDto userDto) {
-        User user = userRepository.findByUsername(userDto.getUsername());
+        var user = userRepository.findByUsername(userDto.getUsername());
         userDto.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
         if (user == null) {
             return userRepository.save(userMapper.fromDto(userDto));
@@ -142,8 +142,8 @@ class UserServiceImpl implements UserService, ProfileService {
 
     @Override
     public UserDto findByUsername(String username) {
-        User byUsername = userRepository.findByUsername(username);
-        UserDto userDto = userMapper.fromEntity(byUsername);
+        var byUsername = userRepository.findByUsername(username);
+        var userDto = userMapper.fromEntity(byUsername);
         if (userDto != null) {
             userDto.setProfileDtos(byUsername.getProfiles().stream().map(userMapper::fromEntity).collect(Collectors.toList()));
         }
@@ -152,12 +152,12 @@ class UserServiceImpl implements UserService, ProfileService {
 
     @Override
     public void reset(UserDto userDto) {
-        User user = userRepository.findByUsernameOrEmail(userDto.getUsername());
+        var user = userRepository.findByUsernameOrEmail(userDto.getUsername());
         if (user == null) {
             return;
         }
 
-        PasswordResetToken myToken = new PasswordResetToken();
+        var myToken = new PasswordResetToken();
         myToken.setUser(user);
         myToken = passwordTokenRepository.save(myToken);
         applicationEventPublisher.publishEvent(new ResetPasswordEvent(new ResetPasswordDto(userMapper.fromEntity(user), myToken.getId())));

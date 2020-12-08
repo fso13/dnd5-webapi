@@ -22,17 +22,14 @@ class NotificationServiceImpl implements NotificationService {
     @Value("${ru.drudenko.dnd5.webapi.contextPath:dnd5-webapi.herokuapp.com}")
     private String contextPath;
 
-    @Value("${spring.mail.username}")
-    private String fromEmail;
-
     @Override
     public void sendResetPassword(ResetPasswordDto resetPasswordDto) {
         MimeMessagePreparator messagePreparator = mimeMessage -> {
-            MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
+            var messageHelper = new MimeMessageHelper(mimeMessage);
             messageHelper.setTo(resetPasswordDto.getUserDto().getEmail());
             messageHelper.setSubject("Востановление пароля на сайте dnd5-webapi.herokuapp.com");
 
-            Context context = new Context();
+            var context = new Context();
             context.setVariable("url", contextPath + "/changePassword?id=" +
                     resetPasswordDto.getUserDto().getId() + "&token=" + resetPasswordDto.getTokenId());
             messageHelper.setText(templateEngine.process("email/resetPassword", context), true);
@@ -44,11 +41,11 @@ class NotificationServiceImpl implements NotificationService {
     @Override
     public void sendRegistration(UserDto userDto) {
         MimeMessagePreparator messagePreparator = mimeMessage -> {
-            MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
+            var messageHelper = new MimeMessageHelper(mimeMessage);
             messageHelper.setTo(userDto.getEmail());
             messageHelper.setSubject("Регистрация на сайте dnd5-webapi.herokuapp.com");
 
-            Context context = new Context();
+            var context = new Context();
             context.setVariable("username", userDto.getUsername());
             context.setVariable("url", contextPath + "/confirm/" + userDto.getTokenRegistration());
             messageHelper.setText(templateEngine.process("email/registration", context), true);

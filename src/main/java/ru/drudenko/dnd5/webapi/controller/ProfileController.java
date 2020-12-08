@@ -27,14 +27,14 @@ public class ProfileController {
     @GetMapping("/add")
     public String addProfiles(Model model) {
         model.addAttribute("profile", new ProfileDto());
-        String username = ((org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
+        var username = ((org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
         model.addAttribute("profiles", userService.findByUsername(username).getProfileDtos());
         return "add-profile";
     }
 
     @GetMapping
     public String getProfiles(Model model) {
-        String username = ((org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
+        var username = ((org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
         model.addAttribute("profiles", userService.findByUsername(username).getProfileDtos());
 
         return "get-profiles";
@@ -42,15 +42,15 @@ public class ProfileController {
 
     @PostMapping
     public String postProfiles(@ModelAttribute("profile") ProfileDto profileDto) {
-        String username = ((org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
+        var username = ((org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
         profileService.createProfile(username, profileDto);
         return "redirect:/profiles";
     }
 
     @GetMapping("/{id}/delete")
     public String deleteProfile(@PathVariable("id") String name) {
-        String username = ((org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
-        ProfileDto profileDto = new ProfileDto();
+        var username = ((org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
+        var profileDto = new ProfileDto();
         profileDto.setName(name);
         profileService.deleteProfile(username, profileDto);
         return "redirect:/profiles";
@@ -59,9 +59,9 @@ public class ProfileController {
     @ApiOperation(value = "Переключиться на другой профиль")
     @PatchMapping(path = "/{name}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    void setFavoriteSpells(@PathVariable("name") String name) {
-        String username = ((org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
-        ProfileDto profileDto = new ProfileDto();
+    void setCurrentProfile(@PathVariable("name") String name) {
+        var username = ((org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
+        var profileDto = new ProfileDto();
         profileDto.setName(name);
         profileDto.setCurrent(true);
         profileService.setCurrentProfile(username, profileDto);

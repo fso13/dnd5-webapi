@@ -10,7 +10,7 @@ import org.springframework.core.task.SimpleAsyncTaskExecutor;
 public class AsynchronousSpringEventsConfig {
     @Bean(name = "applicationEventMulticaster")
     public ApplicationEventMulticaster simpleApplicationEventMulticaster() {
-        SimpleApplicationEventMulticaster eventMulticaster =
+        var eventMulticaster =
                 new SimpleApplicationEventMulticaster();
 
         eventMulticaster.setTaskExecutor(new SimpleAsyncTaskExecutor());
