@@ -1,6 +1,5 @@
 package ru.drudenko.dnd5.webapi.dto.spell;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,7 +14,6 @@ import ru.drudenko.dnd5.webapi.dto.common.PaginationParametersDto;
 @AllArgsConstructor
 public class SpellSearchDto {
     private String name;
-    @JsonProperty("class")
     private String spellClass;
     private String level;
     private String school;

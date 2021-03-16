@@ -94,7 +94,9 @@
             <table class="table table-striped table-hover table-sm">
                 <thead class="thead-dark">
                 <tr>
-                    <th sec:authorize="!isAnonymous()" scope="col"><a th:href="@{/spells(favorite=${!favorite}, name=${name},school=${school} ,class=${class} ,level=${level})}">&#10084;</a></th>
+                    <th sec:authorize="!isAnonymous()" scope="col"><a
+                            th:href="@{/spells(favorite=${!favorite}, name=${name},school=${school} ,spellClass=${spellClass} ,level=${level})}">&#10084;</a>
+                    </th>
                     <th scope="col">Название</th>
                     <th scope="col">Уровень</th>
                     <th scope="col">Класс</th>
@@ -119,7 +121,7 @@
         <div class="pagination" th:each="pageNumber : ${pageNumbers}"
              th:if="${spells.totalPages > 0}">
             <a th:class="${pageNumber==spells.number + 1} ? active"
-               th:href="@{/spells(size=${spells.size}, name=${name},favorite=${favorite},school=${school} ,page=${pageNumber}, class=${class}, level=${level})}"
+               th:href="@{/spells(size=${spells.size}, name=${name},favorite=${favorite},school=${school} ,page=${pageNumber}, spellClass=${spellClass}, level=${level})}"
                th:text="${pageNumber}"></a>
         </div>
     </div>
@@ -128,17 +130,17 @@
 
 <script th:inline="javascript">
     $('#selectClasses').on('hidden.bs.select', function () {
-        document.location = '/spells?class=' + $(this).val().join(',') + '&level=' + [[${level}]] + '&school=' + [[${school}]] + '&favorite=' + [[${favorite}]];
+        document.location = '/spells?spellClass=' + $(this).val().join(',') + '&level=' + [[${level}]] + '&school=' + [[${school}]] + '&favorite=' + [[${favorite}]];
     });
 </script>
 <script th:inline="javascript">
     $('#selectLevels').on('hidden.bs.select', function () {
-        document.location = '/spells?level=' + $(this).val().join(',') + '&class=' + [[${class}]] + '&school=' + [[${school}]] + '&favorite=' + [[${favorite}]];
+        document.location = '/spells?level=' + $(this).val().join(',') + '&spellClass=' + [[${spellClass}]] + '&school=' + [[${school}]] + '&favorite=' + [[${favorite}]];
     });
 </script>
 <script th:inline="javascript">
     $('#selectSchools').on('hidden.bs.select', function () {
-        document.location = '/spells?school=' + $(this).val().join(',') + '&class=' + [[${class}]] + '&level=' + [[${level}]] + '&favorite=' + [[${favorite}]];
+        document.location = '/spells?school=' + $(this).val().join(',') + '&spellClass=' + [[${spellClass}]] + '&level=' + [[${level}]] + '&favorite=' + [[${favorite}]];
     });
 </script>
 <script th:inline="javascript">
@@ -158,7 +160,7 @@
             console.error('Ошибка:', error);
         }
 
-        document.location = '/spells?school=' + [[${spell}]] + '&class=' + [[${class}]] + '&level=' + [[${level}]] + '&favorite=' + [[${favorite}]];
+        document.location = '/spells?school=' + [[${spell}]] + '&spellClass=' + [[${spellClass}]] + '&level=' + [[${level}]] + '&favorite=' + [[${favorite}]];
 
     });
 </script>
