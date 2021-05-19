@@ -6,8 +6,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
-import ru.drudenko.dnd5.webapi.dto.user.UserDto;
-import ru.drudenko.dnd5.webapi.service.UserService;
+import ru.drudenko.dnd5.webapi.profile.UserService;
+import ru.drudenko.dnd5.webapi.profile.dto.UserDto;
 
 @Component
 @RequiredArgsConstructor

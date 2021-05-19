@@ -2,7 +2,7 @@ package ru.drudenko.dnd5.webapi.utils;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
-import ru.drudenko.dnd5.webapi.service.UserService;
+import ru.drudenko.dnd5.webapi.profile.UserService;
 
 public final class SecurityHelper {
     private SecurityHelper() {
