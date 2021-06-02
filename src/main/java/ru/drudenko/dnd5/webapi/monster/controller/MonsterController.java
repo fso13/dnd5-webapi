@@ -64,6 +64,15 @@ public class MonsterController {
         return "get-monster";
     }
 
+    @ApiOperation(value = "Получение монстра по идентификатору")
+    @GetMapping("/{id}/card")
+    public String getMonsterForPrint(@PathVariable("id") String id, Model model) {
+        var monster = monsterService.getByName(id);
+        model.addAttribute("monster", monster);
+        SecurityHelper.getUsernameAndAddProfilesAttributes(model, userService);
+        return "get-monster-print-card";
+    }
+
     @ApiOperation(value = "Получение списка монстров по фильтру")
     @GetMapping
     public String getAllMonsters(Model model,

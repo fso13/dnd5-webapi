@@ -5,6 +5,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.Mappings;
+import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
 import ru.drudenko.dnd5.webapi.monster.dto.MonsterActionDto;
 import ru.drudenko.dnd5.webapi.monster.dto.MonsterDto;
@@ -91,8 +92,32 @@ public interface MonsterMapper {
         }
     }
 
+    @Mappings({
+            @Mapping(target = "name", source = "name", qualifiedByName = "dtoName"),
+            @Mapping(target = "attack", source = "attack", qualifiedByName = "dtoAttack")
+    })
     MonsterTraitDto fromEntity(MonsterTrait trait);
 
+    @Mappings({
+            @Mapping(target = "name", source = "name", qualifiedByName = "dtoName"),
+            @Mapping(target = "attack", source = "attack", qualifiedByName = "dtoAttack")
+    })
     MonsterActionDto fromEntity(MonsterAction action);
 
+    @Named("dtoAttack")
+    default String dtoAttack(String attack) {
+        if (attack == null) {
+            return attack;
+        }
+        int i = attack.indexOf("|");
+        if (i >= 0) {
+            return "<b>" + attack.substring(0, i) + "</b>" + attack.substring(i);
+        }
+        return attack;
+    }
+
+    @Named("dtoName")
+    default String mapName(String name) {
+        return "<b>" + name + "</b>";
+    }
 }
