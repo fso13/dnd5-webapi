@@ -91,13 +91,14 @@
 
 
 <header th:insert="fragments/header.html :: header"></header>
+
 <main class="container small" role="main" style="margin-top:80px" th:switch="${monsters}">
     <!-- Fixed navbar -->
     <div class="container">
 
         <div class="table-responsive-sm" th:case="*">
             <h2 class="my-5">Бестиарий</h2>
-
+            <a class="bloggood-ru-ssilka text-dark" th:href="@{/monsters/card}">print cards</a>
             <div class="btn-group">
                 <select id="selectCr" class="selectpicker" multiple data-selected-text-format="count > 3" title="Опасность...">
                     <option th:each="cr1 : ${crs}" th:selected="${cr1.selected}" th:value="${cr1.name}" th:text="${cr1.name}"></option>

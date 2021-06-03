@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import ru.drudenko.dnd5.webapi.common.dto.FavoriteDto;
 import ru.drudenko.dnd5.webapi.common.dto.PaginationParametersDto;
 import ru.drudenko.dnd5.webapi.monster.MonsterService;
+import ru.drudenko.dnd5.webapi.monster.dto.GroupMonstersDto;
 import ru.drudenko.dnd5.webapi.monster.dto.MonsterBiomDto;
 import ru.drudenko.dnd5.webapi.monster.dto.MonsterCrDto;
 import ru.drudenko.dnd5.webapi.monster.dto.MonsterSearchDto;
@@ -25,8 +26,10 @@ import ru.drudenko.dnd5.webapi.profile.UserService;
 import ru.drudenko.dnd5.webapi.utils.SecurityHelper;
 import ru.drudenko.dnd5.webapi.utils.StringNullEditor;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -71,6 +74,37 @@ public class MonsterController {
         model.addAttribute("monster", monster);
         SecurityHelper.getUsernameAndAddProfilesAttributes(model, userService);
         return "get-monster-print-card";
+    }
+
+    @ApiOperation(value = "Получение монстра по идентификатору")
+    @GetMapping("/card")
+    public String getMonstersForPrint(Model model) {
+        MonsterSearchDto monsterSearchDto = new MonsterSearchDto();
+        PaginationParametersDto paginationParams = new PaginationParametersDto();
+        paginationParams.setPage(1);
+        paginationParams.setSize(1000);
+        monsterSearchDto.setPaginationParams(paginationParams);
+        var monster = monsterService.search(monsterSearchDto);
+
+        List<GroupMonstersDto> result = new ArrayList<>();
+        for (int i = 0; i < monster.getTotalElements(); i++) {
+            int indexList = i / 4;
+            int index = i % 4;
+            if (result.size() <= indexList) {
+                result.add(new GroupMonstersDto());
+            }
+            if (index < 2) {
+                result.get(indexList).getFirstTwo().add(monster.getContent().get(i));
+            } else {
+                result.get(indexList).getNextTwo().add(monster.getContent().get(i));
+
+            }
+        }
+
+        model.addAttribute("monsters", result);
+        model.addAttribute("reverse", Comparator.reverseOrder());
+        SecurityHelper.getUsernameAndAddProfilesAttributes(model, userService);
+        return "get-monsters-print-card";
     }
 
     @ApiOperation(value = "Получение списка монстров по фильтру")
