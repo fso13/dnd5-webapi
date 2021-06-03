@@ -84,8 +84,8 @@
                         <button id="printPageButton" class="btn btn-outline-secondary hidden-print" onclick="window.print()"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>
                             Сохранить как PDF
                         </button>
-                        <a class="bloggood-ru-ssilka text-dark" th:href="@{/monsters/{id}/card(id=${monster.name})}">card
-                        </a>
+                        <!--                        <a class="bloggood-ru-ssilka text-dark" th:href="@{/monsters/{id}/card(id=${monster.name})}">card-->
+                        <!--                        </a>-->
                     </div>
                 </div>
                 <h6 class="my-5" th:utext="'Опастность: ' + ${monster.cr} + ' ( ' + ${monster.exp} + ' )'"></h6>

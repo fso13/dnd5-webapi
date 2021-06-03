@@ -8,11 +8,15 @@ import java.util.List;
 @Data
 public class MonsterDto {
     private String name;
+    private String pdfName;
+    private String lineHeight = "1.2";
     private String fiction;
+    private String pdfFiction;
     private String size;
     private String type;
     private String alignment;
     private String ac;
+    private String pdfAc;
     private String hp;
     private String speed;
     private String str;

@@ -7,17 +7,21 @@ import org.mapstruct.MappingTarget;
 import org.mapstruct.Mappings;
 import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
+import org.springframework.util.ObjectUtils;
 import ru.drudenko.dnd5.webapi.monster.dto.MonsterActionDto;
 import ru.drudenko.dnd5.webapi.monster.dto.MonsterDto;
 import ru.drudenko.dnd5.webapi.monster.dto.MonsterTraitDto;
 
 import java.util.Map;
+import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Mapper
 public interface MonsterMapper {
-
+    Pattern pattern = Pattern.compile("^\\d+");
     Map<String, String> exps = Stream.of(new String[][]{
             {"0", "0 - 10"},
             {"1/8", "25"},
@@ -70,6 +74,18 @@ public interface MonsterMapper {
 
     @AfterMapping
     default void enrichDTOWithFuelType(Monster monster, @MappingTarget MonsterDto dto) {
+        if (!ObjectUtils.isEmpty(dto.getAc())) {
+            Matcher m = pattern.matcher(dto.getAc());
+            m.find();
+            dto.setPdfAc(m.group());
+        }
+        int index = 0;
+        if (dto.getName().contains("(")) {
+            index = dto.getName().indexOf("(");
+        } else {
+            index = dto.getName().indexOf("[");
+        }
+        dto.setPdfName(dto.getName().substring(0, index).trim());
         try {
             dto.setExp(exps.get(dto.getCr()));
         } catch (Exception e) {
@@ -90,16 +106,64 @@ public interface MonsterMapper {
             System.out.println(dto.getName());
             e.printStackTrace();
         }
+
+        try {
+            long count = (dto.getMonsterAction().stream().map(MonsterActionDto::getText).collect(Collectors.joining("")) + dto.getMonsterTrait().stream().map(MonsterTraitDto::getText).collect(Collectors.joining(""))).length();
+
+            if (count + Optional.ofNullable(dto.getFiction()).map(String::length).orElse(0) < 4000) {
+                dto.setPdfFiction(Optional.ofNullable(dto.getFiction()).orElse("").replaceAll("<p>", "<span>").replaceAll("</p>", "</span>"));
+            }
+
+        } catch (Exception e) {
+            System.out.println(dto.getName());
+            e.printStackTrace();
+        }
+        if (dto.getPdfName().equals("Тиран Смерти")) {
+            dto.setLineHeight("1.0");
+        }
+        if (dto.getPdfName().equals("Старший мозг")) {
+            dto.setLineHeight("1.0");
+        }
+        if (dto.getPdfName().equals("Ночная ведьма")) {
+            dto.setLineHeight("0.85");
+        }
+        if (dto.getPdfName().equals("Кобольд изобретатель")) {
+            dto.setLineHeight("1.1");
+        }
+        if (dto.getPdfName().equals("Зеленая ведьма")) {
+            dto.setLineHeight("1.1");
+        }
+        if (dto.getPdfName().equals("Взрослый Бронзовый Дракон")) {
+            dto.setLineHeight("1.0");
+        }
+        if (dto.getPdfName().equals("Вампир заклинатель")) {
+            dto.setLineHeight("0.75");
+        }
+        if (dto.getPdfName().equals("Бормочущий ротовик")) {
+            dto.setLineHeight("1.0");
+        }
+        if (dto.getPdfName().equals("Вампир")) {
+            dto.setLineHeight("0.85");
+        }
+        if (dto.getPdfName().equals("Вампир воин")) {
+            dto.setLineHeight("0.85");
+        }
+        if (dto.getPdfName().equals("Бехолдер")) {
+            dto.setLineHeight("1.1");
+        }
+
     }
 
     @Mappings({
             @Mapping(target = "name", source = "name", qualifiedByName = "dtoName"),
+            @Mapping(target = "text", source = "text", qualifiedByName = "dtoText"),
             @Mapping(target = "attack", source = "attack", qualifiedByName = "dtoAttack")
     })
     MonsterTraitDto fromEntity(MonsterTrait trait);
 
     @Mappings({
             @Mapping(target = "name", source = "name", qualifiedByName = "dtoName"),
+            @Mapping(target = "text", source = "text", qualifiedByName = "dtoText"),
             @Mapping(target = "attack", source = "attack", qualifiedByName = "dtoAttack")
     })
     MonsterActionDto fromEntity(MonsterAction action);
@@ -119,5 +183,10 @@ public interface MonsterMapper {
     @Named("dtoName")
     default String mapName(String name) {
         return "<b>" + name + "</b>";
+    }
+
+    @Named("dtoText")
+    default String mapText(String text) {
+        return text.replaceAll("<p>", "<span>").replaceAll("</p>", "</span>");
     }
 }

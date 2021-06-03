@@ -78,8 +78,7 @@ public class MonsterController {
 
     @ApiOperation(value = "Получение монстра по идентификатору")
     @GetMapping("/card")
-    public String getMonstersForPrint(Model model) {
-        MonsterSearchDto monsterSearchDto = new MonsterSearchDto();
+    public String getMonstersForPrint(Model model, @ModelAttribute MonsterSearchDto monsterSearchDto) {
         PaginationParametersDto paginationParams = new PaginationParametersDto();
         paginationParams.setPage(1);
         paginationParams.setSize(1000);
