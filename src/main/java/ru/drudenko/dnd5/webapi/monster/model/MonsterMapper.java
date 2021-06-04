@@ -101,7 +101,7 @@ public interface MonsterMapper {
                 indexOf = dto.getName().indexOf("[");
                 name = dto.getName().substring(indexOf + 1, dto.getName().indexOf("]")).trim().toUpperCase().replace(" ", "_") + ".jpg";
             }
-            dto.setImgStaticUrl("/img/" + name);
+            dto.setImgStaticUrl("/img/" + name.replaceAll("/", "-"));
         } catch (Exception e) {
             System.out.println(dto.getName());
             e.printStackTrace();

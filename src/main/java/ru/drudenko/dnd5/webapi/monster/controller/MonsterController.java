@@ -82,6 +82,10 @@ public class MonsterController {
         PaginationParametersDto paginationParams = new PaginationParametersDto();
         paginationParams.setPage(1);
         paginationParams.setSize(1000);
+
+        var username = SecurityHelper.getUsernameAndAddProfilesAttributes(model, userService);
+        monsterSearchDto.setUserName(username);
+
         monsterSearchDto.setPaginationParams(paginationParams);
         var monster = monsterService.search(monsterSearchDto);
 

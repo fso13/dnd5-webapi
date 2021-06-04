@@ -26,6 +26,10 @@
     <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 
     <style>
+        i, a {
+            color: black;
+        }
+
         body {
             font-family: Garamond, Baskerville, Baskerville Old Face, Hoefler Text, Times New Roman, serif;
         }
@@ -96,13 +100,13 @@
                 <main class="container" role="main" style="border: 1px solid black; border-radius:10px ">
                     <div class="container" id="parent" th:style="'line-height:' + ${monster.lineHeight} + ';margin-left:3px;'">
 
-                        <div class="row">
-                            <div class="col-8" style="padding: 0;margin-left:-15px;">
+                        <div class="row" style="margin-left: -45px;margin-right: 5px;">
+                            <div class="col-8">
                                 <span class="font-weight-bold " style="font-size: 18px;" th:text="${monster.pdfName}"></span>
                                 <div style="font-size: 9px;"><span th:utext="${monster.type} + ',' + ${monster.size} + ',' + ${monster.alignment} "/></div>
                             </div>
 
-                            <div class="col-4" style="padding: 0;margin-left:-18px;">
+                            <div class="col-4">
                                 <div class="row">
                                     <div class="col-6 bg-danger text-white text-center" style="font-size: 14px;">ХП</div>
                                     <div class="col-6 bg-dark text-white" style="font-size: 14px; border-top-right-radius: 10px;">КД</div>
@@ -201,13 +205,13 @@
                 <main class="container" role="main" style="border: 1px solid black; border-radius:10px ">
                     <div class="container" id="parent" th:style="'line-height:' + ${monster.lineHeight} + ';margin-left:3px;'">
 
-                        <div class="row">
-                            <div class="col-8" style="padding: 0;margin-left:-15px;">
+                        <div class="row" style="margin-left: -45px;margin-right: 5px;">
+                            <div class="col-8">
                                 <span class="font-weight-bold " style="font-size: 18px;" th:text="${monster.pdfName}"></span>
                                 <div style="font-size: 9px;"><span th:utext="${monster.type} + ',' + ${monster.size} + ',' + ${monster.alignment} "/></div>
                             </div>
 
-                            <div class="col-4" style="padding: 0;margin-left:-18px;">
+                            <div class="col-4">
                                 <div class="row">
                                     <div class="col-6 bg-danger text-white text-center" style="font-size: 14px;">ХП</div>
                                     <div class="col-6 bg-dark text-white" style="font-size: 14px; border-top-right-radius: 10px;">КД</div>
