@@ -309,14 +309,14 @@
     <div class="page-break">
         <div class="row" style="padding: 0;margin-right: 15px;margin-top:15px;">
             <div th:if="${#lists.size(group.getFirstTwo()) == 2}" class="col-6" th:with="monster=${group.getFirstTwo().get(1)}">
-                <div class="container float-right" style="border: 1px solid black; border-radius:10px;display: flex;align-items: center;justify-content: center ">
+                <div class="container float-right" style="border-radius:10px;display: flex;align-items: center;justify-content: center ">
                     <div class="form-row text-center">
                         <img style="max-height:6in;width:4in; display: block; margin: 0 auto;" class="rounded float-right" th:alt="${monster.name}" th:src="${monster.imgStaticUrl}">
                     </div>
                 </div>
             </div>
             <div th:if="${#lists.size(group.getFirstTwo()) == 2}" class="col-6" th:with="monster=${group.getFirstTwo().get(0)}">
-                <div class="container float-right" style="border: 1px solid black; border-radius:10px;display: flex;align-items: center;justify-content: center ">
+                <div class="container float-right" style="border-radius:10px;display: flex;align-items: center;justify-content: center ">
                     <div class="form-row text-center">
                         <img style="max-height:6in;width:4in; display: block; margin: 0 auto;" class="rounded float-right" th:alt="${monster.name}" th:src="${monster.imgStaticUrl}">
                     </div>
@@ -324,7 +324,7 @@
             </div>
             <div th:if="${#lists.size(group.getFirstTwo()) == 1}" class="col-6"></div>
             <div th:if="${#lists.size(group.getFirstTwo()) == 1}" class="col-6" th:each="monster : ${group.getFirstTwo()}">
-                <div class="container float-right" style="border: 1px solid black; border-radius:10px;display: flex;align-items: center;justify-content: center ">
+                <div class="container float-right" style=" border-radius:10px;display: flex;align-items: center;justify-content: center ">
                     <div class="form-row text-center">
                         <img style="max-height:6in;width:4in; display: block; margin: 0 auto;" class="rounded float-right" th:alt="${monster.name}" th:src="${monster.imgStaticUrl}">
                     </div>
@@ -333,14 +333,14 @@
         </div>
         <div class="row" style="padding: 0;margin-right: 15px;margin-top:15px;">
             <div th:if="${#lists.size(group.getNextTwo()) == 2}" class="col-6" th:with="monster=${group.getNextTwo().get(1)}">
-                <div class="container float-right" style="border: 1px solid black; border-radius:10px;display: flex;align-items: center;justify-content: center ">
+                <div class="container float-right" style="border-radius:10px;display: flex;align-items: center;justify-content: center ">
                     <div class="form-row text-center">
                         <img style="max-height:6in;width:4in; display: block; margin: 0 auto;" class="rounded float-right" th:alt="${monster.name}" th:src="${monster.imgStaticUrl}">
                     </div>
                 </div>
             </div>
             <div th:if="${#lists.size(group.getNextTwo()) == 2}" class="col-6" th:with="monster=${group.getNextTwo().get(0)}">
-                <div class="container float-right" style="border: 1px solid black; border-radius:10px;display: flex;align-items: center;justify-content: center ">
+                <div class="container float-right" style="border-radius:10px;display: flex;align-items: center;justify-content: center ">
                     <div class="form-row text-center">
                         <img style="max-height:6in;width:4in; display: block; margin: 0 auto;" class="rounded float-right" th:alt="${monster.name}" th:src="${monster.imgStaticUrl}">
                     </div>
@@ -348,7 +348,7 @@
             </div>
             <div th:if="${#lists.size(group.getNextTwo()) == 1}" class="col-6"></div>
             <div th:if="${#lists.size(group.getNextTwo()) == 1}" class="col-6" th:each="monster : ${group.getNextTwo()}">
-                <div class="container float-right" style="border: 1px solid black; border-radius:10px;display: flex;align-items: center;justify-content: center ">
+                <div class="container float-right" style="border-radius:10px;display: flex;align-items: center;justify-content: center ">
                     <div class="form-row text-center">
                         <img style="max-height:6in;width:4in; display: block; margin: 0 auto;" class="rounded float-right" th:alt="${monster.name}" th:src="${monster.imgStaticUrl}">
                     </div>
