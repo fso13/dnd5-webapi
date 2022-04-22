@@ -26,10 +26,7 @@ public class Rating {
     @Column
     private int xp;
     @Column
-    private String attack;
-    @Column
     private Instant date;
-
     @PrePersist
     private void save() {
         this.date = Instant.now();
