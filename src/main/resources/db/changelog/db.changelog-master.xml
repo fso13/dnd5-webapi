@@ -25,5 +25,6 @@
     </changeSet>
 
     <include file="1.8.31-delete-spells.xml" relativeToChangelogFile="true"/>
+    <include file="2.0-tb_rating-create.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
