@@ -38,6 +38,8 @@ public class SecurityPermitAllConfig extends WebSecurityConfigurerAdapter {
                         "/confirm/**",
                         "/fragments/**",
                         "/monsters",
+                        "/rating",
+                        "/rating/**",
                         "/monsters/**",
                         "/spells",
                         "/spells/**",
