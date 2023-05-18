@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 @Data
 public class SpellDto {
+    private String nameEn;
     private String name;
     private String school;
     private String level;

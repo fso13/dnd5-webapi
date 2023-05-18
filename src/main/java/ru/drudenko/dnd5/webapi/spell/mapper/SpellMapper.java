@@ -15,6 +15,7 @@ interface SpellMapper {
 
     @Mappings({
             @Mapping(expression = "java(org.springframework.util.StringUtils.capitalize(spell.getName().toLowerCase()))", target = "name"),
+            @Mapping(expression = "java(org.springframework.util.StringUtils.capitalize(java.util.Optional.ofNullable(spell.getNameEn()).orElse(\"\").toLowerCase()))", target = "nameEn"),
     })
     SpellDto fromEntity(Spell spell);
 }
